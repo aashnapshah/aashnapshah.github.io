@@ -2,6 +2,14 @@
 
 <!-- start custom head snippets -->
 
+<!-- Google Fonts - Montserrat (for headers) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<!-- Google Fonts - Nunito Sans (Proxima Nova alternative for body text) -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
 <link rel="apple-touch-icon" sizes="57x57" href="{{ base_path }}/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
 <link rel="apple-touch-icon" sizes="60x60" href="{{ base_path }}/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
 <link rel="apple-touch-icon" sizes="72x72" href="{{ base_path }}/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
@@ -28,5 +36,39 @@
 <!-- Support for MatJax -->
 <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- Custom Profile Image Styling -->
+<style>
+.author__avatar img {
+  /* Ensure perfect circle */
+  border-radius: 50% !important;
+  width: 250px !important;
+  height: 250px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  
+  /* Add subtle shadow and border */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  border: 3px solid #f0f0f0 !important;
+  
+  /* Smooth transitions */
+  transition: all 0.3s ease !important;
+}
+
+.author__avatar img:hover {
+  /* Hover effects */
+  transform: scale(1.05) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+  border-color: #007acc !important;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 1024px) {
+  .author__avatar img {
+    width: 180px !important;
+    height: 180px !important;
+  }
+}
+</style>
 
 <!-- end custom head snippets -->

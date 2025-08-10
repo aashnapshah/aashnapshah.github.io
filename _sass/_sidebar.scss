@@ -21,7 +21,9 @@
   }
 
   @include breakpoint($large) {
-    @include span(2 of 12);
+    // @include span(4.5 of 12); // Commented out grid system
+    width: 450px !important; // Force specific width
+    min-width: 450px !important; // Ensure minimum width
     opacity: 1;
     -webkit-transition: opacity 0.2s ease-in-out;
             transition: opacity 0.2s ease-in-out;
@@ -32,23 +34,25 @@
   }
 
   @include breakpoint($x-large) {
-    max-width: $sidebar-link-max-width;
+    // max-width: $sidebar-link-max-width; // Commented out to allow full width
     padding-right: 0;
   }
 
   h2, h3, h4, h5, h6 {
     margin-bottom: 0;
     font-family: $sans-serif-narrow;
+    text-align: center; // Center all headers
   }
 
   h3, h4 {
-    font-size: $type-size-5;
+    font-size: $type-size-5; // Reduced back to type-size-5
   }
 
   p, li {
     font-family: $sans-serif;
-    font-size: $type-size-6;
-    line-height: 1.5;
+    font-size: $type-size-6; // Reduced back to type-size-6 for better fit
+    line-height: 1.5; // Reduced line height
+    text-align: center; // Center all text
   }
 
   img {
@@ -79,23 +83,47 @@
 .author__avatar {
   display: table-cell;
   vertical-align: top;
-  width: 36px;
+  width: 100px; // Increased from 50px
   // set width only, for non-square avatars
   // height: 36px;
+  pointer-events: none; // Make the container non-interactive
 
   @include breakpoint($large) {
     display: block;
-    width: auto;
+    width: 100%; // Full width to center properly
     height: auto;
+    text-align: center; // Center the avatar
+    pointer-events: none; // Ensure non-interactive on large screens
   }
 
   img {
-    max-width: 175px;
-    border-radius: 50%;
+    max-width: 1000px; // Increased from 800px for bigger circle
+    border-radius: 0%;
+    object-fit: cover;
+    aspect-ratio: 1;
+    transition: transform 0.3s ease;
+    margin: 0 auto; // Center the image horizontally
+    box-shadow: none !important; // Explicitly remove any shadows with !important
+    filter: none; // Remove any filters that might create shadow effects
+    pointer-events: none; // Make the image itself non-interactive
+    cursor: default; // Show default cursor instead of pointer
+    border: 0; // Explicitly set border to 0
+    outline: none; // Remove any outlines
 
     @include breakpoint($large) {
-      padding: 5px;
-      border: 1px solid $border-color;
+      padding: 0; // Remove padding
+      border: 0; // Explicitly set border to 0
+      border-radius: 0%;
+      box-shadow: none !important; // Ensure no shadows on large screens with !important
+      pointer-events: none; // Ensure non-interactive on large screens
+      outline: none; // Ensure no outlines on large screens
+      
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: none !important; // Ensure no shadows on hover with !important
+        cursor: default; // Keep default cursor on hover
+        outline: none; // Ensure no outlines on hover
+      }
     }
   }
 }
@@ -103,8 +131,8 @@
 .author__content {
   display: table-cell;
   vertical-align: top;
-  padding-left: 15px;
-  padding-right: 25px;
+  padding-left: 1px;
+  padding-right: 1px;
   line-height: 1;
 
   @include breakpoint($large) {
@@ -112,6 +140,7 @@
     width: 100%;
     padding-left: 0;
     padding-right: 0;
+    text-align: center; // Center all content
   }
 }
 
@@ -119,17 +148,17 @@
   margin: 0;
 
   @include breakpoint($large) {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px; // Increased from 8px to add more space before bio
   }
 }
 .sidebar .author__name {
   font-family: $sans-serif;
-  font-size: $type-size-5;
+  font-size: $type-size-3; // Kept at type-size-3
 }
 
 .sidebar .author__desktop {
-  display: none;
+  display: block; // Changed from none to block for consistent behavior
   @media screen and (min-width: 1024px) {
     display: block;
   }
@@ -139,8 +168,17 @@
   margin: 0;
 
   @include breakpoint($large) {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px; // Consistent spacing after pronouns
+  }
+}
+
+.author__employer {
+  margin: 0;
+
+  @include breakpoint($large) {
+    margin-top: 15px;
+    margin-bottom: 25px; // Consistent spacing before social media
   }
 }
 
@@ -148,8 +186,8 @@
   margin: 0;
 
   @include breakpoint($large) {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 20px; // Consistent spacing after bio
   }
 }
 
@@ -186,7 +224,7 @@
   position: absolute;
   right: 0;
   margin-top: 15px;
-  padding: 10px;
+  padding: 0px;
   list-style-type: none;
   border: 1px solid $border-color;
   border-radius: $border-radius;
@@ -196,13 +234,15 @@
   cursor: default;
 
   @include breakpoint($large) {
-    display: block;
+    display: block; // Keep as block for overall structure
     position: relative;
-    margin: 0;
+    margin: 0; // Reset to 0 for consistent spacing
+    margin-top: 10px; // Add space above social media icons
     padding: 0;
     border: 0;
     background: transparent;
     box-shadow: none;
+    text-align: center; // Center all links
   }
 
   &:before {
@@ -238,20 +278,45 @@
       display: none;
     }
   }
-
   li {
     white-space: nowrap;
+
+    @include breakpoint($large) {
+      white-space: normal;
+      margin: 0;
+      display: inline-block; // Make list items display inline
+    }
+  }
+
+  // Style for social media icons to be horizontal
+  li a[href*="mailto"],
+  li a[href*="github.com"],
+  li a[href*="linkedin.com"],
+  li a[href*="twitter.com"] {
+    @include breakpoint($large) {
+      display: inline-block;
+      margin-right: 0px; // Reduced margin between icons
+      margin-top: 0px; // Reduced top margin
+      vertical-align: middle; // Better alignment
+    }
   }
 
   a {
     display: block;
-    margin-bottom: 5px;
-    padding-right: 5px;
+    margin-bottom: 8px;
+    padding-right: 0px;
     padding-top: 2px;
     padding-bottom: 2px;
     color: inherit;
     font-size: $type-size-5;
     text-decoration: none;
+
+    @include breakpoint($large) {
+      display: inline-block;
+      margin-bottom: 0;
+      margin-top: 0;
+      white-space: nowrap;
+    }
 
     &:hover {
       text-decoration: underline;
