@@ -22,8 +22,8 @@
 
   @include breakpoint($large) {
     // @include span(4.5 of 12); // Commented out grid system
-    width: 450px !important; // Force specific width
-    min-width: 450px !important; // Ensure minimum width
+    width: 350px !important; // Force specific width - reduced from 450px
+    min-width: 350px !important; // Ensure minimum width - reduced from 450px
     opacity: 1;
     -webkit-transition: opacity 0.2s ease-in-out;
             transition: opacity 0.2s ease-in-out;

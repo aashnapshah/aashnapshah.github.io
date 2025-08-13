@@ -12,14 +12,14 @@
   animation-delay: 0.35s;
 
   @include breakpoint($x-large) {
-    max-width: $x-large;
+    max-width: 1400px; // Increased from $x-large (1280px) to 1400px for wider content
   }
 }
 
 .page {
   @include breakpoint($large) {
     // @include span(7.5 of 12 last); // Commented out grid system
-    margin-left: 450px; // Reduced from 470px to move main content more left
+    margin-left: 350px; // Reduced from 450px to match new sidebar width
     // Removed prefix and suffix to eliminate white space
   }
 
@@ -60,9 +60,14 @@
     font-size: 0.8em; // Custom font size - smaller than $type-size-7
   }
 
+  /* Make content wider and more spacious */
+  max-width: 100%;
+  padding-right: 2em; // Add more right padding for better spacing
+  
   /* paragraph indents */
   p {
     margin: 0 0 $indent-var;
+    max-width: 100%; // Ensure paragraphs can use full width
 
     /* sibling indentation*/
     @if $paragraph-indent == true {

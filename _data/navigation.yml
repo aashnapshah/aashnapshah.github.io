@@ -1,12 +1,12 @@
 # main navigation
 main:
   - title: "About Me"
-    url: /#about-me
+    url: /
   - title: "Research"
-    url: /#research
+    url: /research/
   - title: "Gallery"
-    url: /#gallery
+    url: /gallery/
   - title: "Contact"
-    url: /#contact
+    url: /contact/
   - title: "CV"
-    url: /#cv
+    url: /cv/
