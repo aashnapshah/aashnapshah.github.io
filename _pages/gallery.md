@@ -7,71 +7,83 @@ author_profile: false
 
 <div class="gallery-grid">
   <div class="gallery-item large">
-    <img src="/images/photo3.jpg" alt="Research Screenshot 1" loading="lazy">
+    <img src="/images/photo17.png" alt="Photo 17" loading="lazy">
   </div>
   
   <div class="gallery-item medium">
-    <img src="/images/photo2.png" alt="Research Screenshot 2" loading="lazy">
-  </div>
-  
-  <div class="gallery-item wide">
-    <img src="/images/photo1.png" alt="Research Screenshot 3" loading="lazy">
+    <img src="/images/photo3.png" alt="Photo 3" loading="lazy">
   </div>
   
   <div class="gallery-item large">
-    <img src="/images/photo4.png" alt="Research Screenshot 4" loading="lazy">
+    <img src="/images/photo8.png" alt="Photo 8" loading="lazy">
   </div>
   
   <div class="gallery-item medium">
-    <img src="/images/photo5.png" alt="Research Screenshot 5" loading="lazy">
-  </div>
-  
-  <div class="gallery-item wide">
-    <img src="/images/photo6.png" alt="Research Screenshot 6" loading="lazy">
+    <img src="/images/photo12.png" alt="Photo 12" loading="lazy">
   </div>
   
   <div class="gallery-item large">
-    <img src="/images/photo7.png" alt="Research Screenshot 7" loading="lazy">
-  </div>
-  
-  <div class="gallery-item medium">
-    <img src="/images/photo8.png" alt="Personal Photo" loading="lazy">
-  </div>
-  
-  <div class="gallery-item wide">
-    <img src="/images/photo9.png" alt="Research Screenshot 9" loading="lazy">
+    <img src="/images/photo1.jpg" alt="Photo 1" loading="lazy">
   </div>
   
   <div class="gallery-item large">
-    <img src="/images/photo10.png" alt="Research Screenshot 10" loading="lazy">
+    <img src="/images/photo15.png" alt="Photo 15" loading="lazy">
   </div>
   
   <div class="gallery-item medium">
-    <img src="/images/photo11.png" alt="Research Screenshot 11" loading="lazy">
-  </div>
-  
-  <div class="gallery-item wide">
-    <img src="/images/photo12.png" alt="Research Screenshot 12" loading="lazy">
-  </div>
-  
-  <div class="gallery-item medium">
-    <img src="/images/Screenshot 2025-08-13 at 7.33.55 PM.png" alt="Research Screenshot 13" loading="lazy">
+    <img src="/images/photo6.png" alt="Photo 6" loading="lazy">
   </div>
   
   <div class="gallery-item large">
-    <img src="/images/photo13.png" alt="Research Screenshot 13" loading="lazy">
+    <img src="/images/photo19.png" alt="Photo 19" loading="lazy">
   </div>
   
   <div class="gallery-item medium">
-    <img src="/images/photo14.png" alt="Research Screenshot 14" loading="lazy">
+    <img src="/images/photo4.png" alt="Photo 4" loading="lazy">
+  </div>
+  
+  <div class="gallery-item large">
+    <img src="/images/photo10.png" alt="Photo 10" loading="lazy">
+  </div>
+  
+  <div class="gallery-item medium">
+    <img src="/images/photo20.png" alt="Photo 20" loading="lazy">
+  </div>
+  
+  <div class="gallery-item medium">
+    <img src="/images/photo7.png" alt="Photo 7" loading="lazy">
+  </div>
+  
+  <div class="gallery-item large">
+    <img src="/images/photo2.png" alt="Photo 2" loading="lazy">
+  </div>
+  
+  <div class="gallery-item large">
+    <img src="/images/photo13.png" alt="Photo 13" loading="lazy">
+  </div>
+  
+  <div class="gallery-item medium">
+    <img src="/images/photo9.png" alt="Photo 9" loading="lazy">
+  </div>
+  
+  <div class="gallery-item large">
+    <img src="/images/photo16.png" alt="Photo 16" loading="lazy">
+  </div>
+  
+  <div class="gallery-item large">
+    <img src="/images/photo5.png" alt="Photo 5" loading="lazy">
+  </div>
+  
+  <div class="gallery-item medium">
+    <img src="/images/photo11.png" alt="Photo 11" loading="lazy">
   </div>
   
   <div class="gallery-item wide">
-    <img src="/images/photo15.png" alt="Research Screenshot 15" loading="lazy">
+    <img src="/images/photo14.png" alt="Photo 14" loading="lazy">
   </div>
   
-  <div class="gallery-item medium">
-    <img src="/images/photo16.png" alt="Research Screenshot 16" loading="lazy">
+  <div class="gallery-item large">
+    <img src="/images/photo18.png" alt="Photo 18" loading="lazy">
   </div>
 </div>
 
@@ -83,11 +95,26 @@ author_profile: false
   max-width: none !important;
   width: 100% !important;
   padding: 0 !important;
+  margin-left: 0 !important;
+}
+
+.page__inner-wrap {
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+#main {
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 200px;
   gap: 8px;
   margin: 1em 0;
@@ -111,6 +138,15 @@ author_profile: false
   object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
+}
+
+/* Rotate photo 20 to correct orientation */
+.gallery-item:nth-child(13) img {
+  transform: rotate(90deg);
+}
+
+.gallery-item:nth-child(13):hover img {
+  transform: rotate(90deg) scale(1.05);
 }
 
 .gallery-item:hover img {
@@ -141,21 +177,21 @@ author_profile: false
 /* Responsive adjustments */
 @media (max-width: 1600px) {
   .gallery-grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 6px;
   }
 }
 
 @media (max-width: 1400px) {
   .gallery-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 6px;
   }
 }
 
 @media (max-width: 1200px) {
   .gallery-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 6px;
   }
 }
