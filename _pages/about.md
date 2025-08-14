@@ -11,7 +11,7 @@ I'm a fifth-year PhD candidate in the Department of Biomedical Informatics at Ha
 
 I focus on answering a deceptively simple question: **What does it mean to be *"normal"* in medicine - and how do those definitions shape clinical decisions?** Using methods ranging from statistical learning to generative modeling, I unpack assumptions we have historically embedded in the definition or normal and aim to develop more precise, data-driven definitions that better reflect the diversity and heterogeneity of patients in the era of precision medicine.
 
-I'm graduating *this year* and will be on the job market! I'm passionate about continuing to build machine learning models for healthcare and would love to chat about opportunities in both industry and academia. Feel free to reach out if you'd like to connect!
+I'm graduating *this year* and will be on the job market! I'm passionate about continuing to build machine learning models for healthcare and would love to chat about opportunities in industry. Feel free to reach out if you'd like to connect!
 
 ### Education
 

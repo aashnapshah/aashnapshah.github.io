@@ -37,10 +37,10 @@ As vision-language models (VLMs) like **Gemini Pro** and **GPT-4 Vision** gain t
 I further examine how **prompt structure**, **image modality**, and **patient subgroup characteristics** (e.g., skin tone, age) influence model performance. While Gemini Pro outperforms GPT-4 overall, both models demonstrate **shortcut learning behaviors** and reduced accuracy on underrepresented subgroups. These findings highlight critical vulnerabilities in current VLM deployment and emphasize the need for **prompt-robustness** and **subgroup fairness** in medical image analysis.
 
 ---
-
+<!-- 
 ### Demographic Inference and Shortcut Learning in Chest X-Rays  
 **Understanding how deep models infer sensitive attributes from medical images**
 
 Deep learning models can infer demographic attributes — such as age, sex, and race — from chest X-rays with surprising accuracy, even when these features are not visibly encoded. This raises fundamental questions about what cues models rely on. We present **TRACE**, a framework for dissecting the **shortcuts** underlying demographic inference in medical imaging.
 
-TRACE combines **image distortion tests**, **proxy variable modeling** (e.g., BMI, lung size, device use), and **embedding-level transfer analysis** to identify which features contribute to model predictions. Our results show that models often exploit indirect signals: **view position (AP/PA)**, **pixel intensity patterns**, and co-occurring clinical markers — rather than meaningful anatomy. These findings expose hidden pathways for bias and raise concerns about the **fairness and transparency** of deep models used in clinical workflows.
+TRACE combines **image distortion tests**, **proxy variable modeling** (e.g., BMI, lung size, device use), and **embedding-level transfer analysis** to identify which features contribute to model predictions. Our results show that models often exploit indirect signals: **view position (AP/PA)**, **pixel intensity patterns**, and co-occurring clinical markers — rather than meaningful anatomy. These findings expose hidden pathways for bias and raise concerns about the **fairness and transparency** of deep models used in clinical workflows. -->

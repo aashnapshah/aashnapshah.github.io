@@ -1,9 +1,9 @@
 ---
+layout: single
 permalink: /gallery/
 title: "Gallery"
-author_profile: true
+author_profile: false
 ---
-
 
 <div class="gallery-grid">
   <div class="gallery-item large">
@@ -49,20 +49,51 @@ author_profile: true
   <div class="gallery-item medium">
     <img src="/images/photo11.png" alt="Research Screenshot 11" loading="lazy">
   </div>
+  
+  <div class="gallery-item wide">
+    <img src="/images/photo12.png" alt="Research Screenshot 12" loading="lazy">
+  </div>
+  
+  <div class="gallery-item medium">
+    <img src="/images/Screenshot 2025-08-13 at 7.33.55 PM.png" alt="Research Screenshot 13" loading="lazy">
+  </div>
+  
+  <div class="gallery-item large">
+    <img src="/images/photo13.png" alt="Research Screenshot 13" loading="lazy">
+  </div>
+  
+  <div class="gallery-item medium">
+    <img src="/images/photo14.png" alt="Research Screenshot 14" loading="lazy">
+  </div>
+  
+  <div class="gallery-item wide">
+    <img src="/images/photo15.png" alt="Research Screenshot 15" loading="lazy">
+  </div>
+  
+  <div class="gallery-item medium">
+    <img src="/images/photo16.png" alt="Research Screenshot 16" loading="lazy">
+  </div>
 </div>
 
 ---
 
-## Gallery Styling
-
 <style>
+/* Override page width constraints for gallery */
+.page__content {
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: 200px;
-  gap: 15px;
-  margin: 2em 0;
+  gap: 8px;
+  margin: 1em 0;
   grid-auto-flow: dense;
+  max-width: 100%;
+  width: 100%;
 }
 
 .gallery-item {
@@ -108,15 +139,24 @@ author_profile: true
 }
 
 /* Responsive adjustments */
+@media (max-width: 1600px) {
+  .gallery-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+}
+
 @media (max-width: 1400px) {
   .gallery-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
   }
 }
 
 @media (max-width: 1200px) {
   .gallery-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
   }
 }
 
@@ -124,7 +164,7 @@ author_profile: true
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 150px;
-    gap: 10px;
+    gap: 6px;
   }
   
   .gallery-item.large {
@@ -132,7 +172,7 @@ author_profile: true
     grid-row: span 2;
   }
   
-  .gallery-item.large {
+  .gallery-item.wide {
     grid-column: span 2;
     grid-row: span 1;
   }
@@ -142,6 +182,7 @@ author_profile: true
   .gallery-grid {
     grid-template-columns: 1fr;
     grid-auto-rows: 200px;
+    gap: 6px;
   }
   
   .gallery-item.medium,
@@ -152,8 +193,6 @@ author_profile: true
   }
 }
 </style>
-
----
 
 ---
 

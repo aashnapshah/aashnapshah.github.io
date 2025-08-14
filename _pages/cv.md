@@ -1,7 +1,7 @@
 ---
 permalink: /cv/
 title: "CV"
-author_profile: true
+author_profile: false
 ---
 
 # Curriculum Vitae

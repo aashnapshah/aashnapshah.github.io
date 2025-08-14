@@ -1,8 +1,7 @@
 ---
-layout: archive
+layout: single
 title: "Sitemap"
-permalink: /sitemap/
-author_profile: true
+author_profile: false
 ---
 
 {% include base_path %}
