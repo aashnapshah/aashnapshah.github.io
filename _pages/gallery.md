@@ -7,7 +7,7 @@ author_profile: false
 
 <div class="gallery-grid">
   <div class="gallery-item large">
-    <img src="/images/photo1.jpg" alt="Research Screenshot 1" loading="lazy">
+    <img src="/images/photo3.jpg" alt="Research Screenshot 1" loading="lazy">
   </div>
   
   <div class="gallery-item medium">
@@ -15,7 +15,7 @@ author_profile: false
   </div>
   
   <div class="gallery-item wide">
-    <img src="/images/photo3.png" alt="Research Screenshot 3" loading="lazy">
+    <img src="/images/photo1.png" alt="Research Screenshot 3" loading="lazy">
   </div>
   
   <div class="gallery-item large">
