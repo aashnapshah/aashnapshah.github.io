@@ -6,19 +6,18 @@ author_profile: true
 ---
 
 ### Adaptive Modeling to Personalize Laboratory Reference Intervals 
-**Routine blood tests** — from complete blood counts (CBC) to metabolic and lipid panels — are vital for detecting and managing a wide range of conditions. But their interpretation depends on **population-based reference intervals** — the "normal ranges" against which results are compared.
+**Routine blood tests**—from complete blood counts (CBCs) to metabolic and lipid panels—are central to detecting and managing a wide range of health conditions. Their interpretation, however, typically relies on **population-based reference intervals**: the “normal ranges” used to compare individual results.  
 
-While useful, these population-based norms often overlook **individual variation** and fail to leverage a person's own medical history. That means early, subtle shifts in someone's health can be missed - especially if results still fall within the population range.
+While these norms are useful, their **one-size-fits-all** design often overlooks individual variation and a patient’s medical history. This means subtle, early shifts in health can go undetected if results remain within the population-defined “normal” range.  
 
-My work develops **adaptive, hybrid models** that blend the broad applicability of population-based intervals with the precision of personal baselines. Using over **20 years** of longitudinal records from **Clalit Health Services** (4.9M+ members), I apply statistical and generative models to dynamically update reference intervals as more individual data becomes available.
+This project addresses this gap by developing **adaptive, hybrid models** that combine the broad applicability of population-based intervals with the precision of personal baselines. Leveraging over **20 years** of longitudinal records from **Clalit Health Services** (4.9M+ members), I apply statistical and generative models to **dynamically update reference intervals** as more individual data accumulates.  
 
-I compare three approaches:
+### I compare three approaches:
+- **Population-Based**: stable but often insensitive to early, individual changes.  
+- **Personalized**: highly sensitive, but risk overreacting to natural fluctuations.  
+- **Hybrid Adaptive**: population priors refined continuously with each patient’s data, balancing stability with personalization.  
 
-- **Population-based**: the traditional standard.
-- **Personalized setpoints**: individual-specific baselines.
-- **Hybrid adaptive**: population priors refined with each patient's data.
-
-The goal: improve **sensitivity** and **specificity** for predicting disease progression, especially when data is sparse or noisy, without overdiagnosis.
+**Goal:** Achieve the best of both worlds—improving detection of meaningful health changes without being misled by noise—thereby enhancing prediction of disease progression and reducing overdiagnosis.  
 
 ### Replacing Course Demographic Stratification in Reference Equations  
 **Developing equitable PFT reference equations using sitting height and body morphology**
