@@ -9,9 +9,9 @@
 # Basic Site Settings
 locale                   : "en-US"
 title                    : "Aashna Shah"
-title_separator          : "-"
+title_separator          : "—"
 name                     : &name "Aashna Shah"
-description              : &description "PhD Candidate"
+description              : &description "Aashna Shah — PhD Candidate at Harvard University building machine learning systems for clinical decision making. Research in personalized reference intervals, health equity, and medical AI fairness."
 url                      : https://aashnapshah.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 # repository               : "aashnapshah/aashnapshah.github.io"
@@ -126,13 +126,16 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 :  # Open Graph/Twitter default site image
+og_image                 : "profile_compressed.png"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+  type                   : "Person"
+  name                   : "Aashna Shah"
+  links:
+    - "https://github.com/aashnapshah"
+    - "https://linkedin.com/in/aashna-p-shah"
+    - "https://scholar.google.com/citations?hl=en&user=7RmZd8QAAAAJ"
 
 
 # Analytics
