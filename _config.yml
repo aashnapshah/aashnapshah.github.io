@@ -12,7 +12,7 @@ title                    : "Aashna Shah"
 title_separator          : "—"
 name                     : &name "Aashna Shah"
 description              : &description "PhD student at Harvard University building machine learning systems that rethink how medicine defines normal."
-url                      : https://aashnapshah.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://aashna-shah.com
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 # repository               : "aashnapshah/aashnapshah.github.io"
 
