@@ -5,41 +5,107 @@ permalink: /research/
 author_profile: true
 ---
 
-### Adaptive Modeling to Personalize Laboratory Reference Intervals 
-**Routine blood tests**—from complete blood counts (CBCs) to metabolic and lipid panels—are central to detecting and managing a wide range of health conditions. Their interpretation, however, typically relies on **population-based reference intervals**: the “normal ranges” used to compare individual results.  
+<div class="section-label">Active Projects</div>
 
-While these norms are useful, their **one-size-fits-all** design often overlooks individual variation and a patient’s medical history. This means subtle, early shifts in health can go undetected if results remain within the population-defined “normal” range.  
+<div class="research-cards">
 
-This project addresses this gap by developing **adaptive, hybrid models** that combine the broad applicability of population-based intervals with the precision of personal baselines. Leveraging over **20 years** of longitudinal records from **Clalit Health Services** (4.9M+ members), I apply statistical and generative models to **dynamically update reference intervals** as more individual data accumulates.  
+<div class="research-card">
+  <div class="research-card-header">
+    <div class="research-card-icon"><i class="fas fa-vial"></i></div>
+    <div>
+      <div class="research-card-title">Adaptive Modeling for Personalized Lab Reference Intervals</div>
+      <div class="research-card-subtitle">Redefining "normal" with patient-specific baselines</div>
+    </div>
+  </div>
+  <div class="research-card-body">
+    Routine blood tests are compared against population-wide "normal ranges" that miss individual variation. I build hybrid models that blend population priors with personal history, dynamically updating reference intervals as more data arrives — catching early disease signals that standard ranges miss.
+  </div>
+  <div class="research-card-stats">
+    <div class="stat">
+      <span class="stat-value">4.9M+</span>
+      <span class="stat-label">Patients</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">20+ yrs</span>
+      <span class="stat-label">Longitudinal Data</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">3</span>
+      <span class="stat-label">Modeling Approaches</span>
+    </div>
+  </div>
+  <div class="research-tags">
+    <span class="research-tag">Bayesian updating</span>
+    <span class="research-tag">Generative models</span>
+    <span class="research-tag">Clalit Health Services</span>
+    <span class="research-tag">Longitudinal EHR</span>
+  </div>
+</div>
 
-### I compare three approaches:
-- **Population-Based**: stable but often insensitive to early, individual changes.  
-- **Personalized**: highly sensitive, but risk overreacting to natural fluctuations.  
-- **Hybrid Adaptive**: population priors refined continuously with each patient’s data, balancing stability with personalization.  
+<div class="research-card">
+  <div class="research-card-header">
+    <div class="research-card-icon"><i class="fas fa-lungs"></i></div>
+    <div>
+      <div class="research-card-title">Replacing Race in Pulmonary Function Test Reference Equations</div>
+      <div class="research-card-subtitle">ARC & ARCPFT: anatomy over demographics</div>
+    </div>
+  </div>
+  <div class="research-card-body">
+    Lung function tests have long used race-based equations with no biological basis. I developed ARC, a framework that identifies anatomical proxies (sitting height, body morphology) to explain group-level lung function differences — and ARCPFT, a new reference equation that improves accuracy and equity simultaneously.
+  </div>
+  <div class="research-card-stats">
+    <div class="stat">
+      <span class="stat-value">~160K</span>
+      <span class="stat-label">Participants</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">24%</span>
+      <span class="stat-label">Error Reduction (Black patients)</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">2</span>
+      <span class="stat-label">Cohorts (NHANES + UK Biobank)</span>
+    </div>
+  </div>
+  <div class="research-tags">
+    <span class="research-tag">Health equity</span>
+    <span class="research-tag">Reference equations</span>
+    <span class="research-tag">NHANES</span>
+    <span class="research-tag">UK Biobank</span>
+    <span class="research-tag">Pulmonary function</span>
+  </div>
+</div>
 
-**Goal:** Achieve the best of both worlds—improving detection of meaningful health changes without being misled by noise—thereby enhancing prediction of disease progression and reducing overdiagnosis.  
+<div class="research-card">
+  <div class="research-card-header">
+    <div class="research-card-icon"><i class="fas fa-camera-retro"></i></div>
+    <div>
+      <div class="research-card-title">Shortcut Learning in Vision-Language Models for Medical Imaging</div>
+      <div class="research-card-subtitle">Probing GPT-4V and Gemini Pro for clinical robustness</div>
+    </div>
+  </div>
+  <div class="research-card-body">
+    As VLMs enter clinical workflows, I systematically benchmark their reliability. Minor prompt rephrasing bypasses safety constraints and elicits confident diagnoses. Both models show shortcut learning and reduced accuracy on underrepresented subgroups — highlighting critical gaps in prompt-robustness and fairness.
+  </div>
+  <div class="research-card-stats">
+    <div class="stat">
+      <span class="stat-value">3</span>
+      <span class="stat-label">Imaging Domains</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">2</span>
+      <span class="stat-label">Foundation Models</span>
+    </div>
+  </div>
+  <div class="research-tags">
+    <span class="research-tag">VLMs</span>
+    <span class="research-tag">GPT-4 Vision</span>
+    <span class="research-tag">Gemini Pro</span>
+    <span class="research-tag">Fairness</span>
+    <span class="research-tag">Dermatology</span>
+    <span class="research-tag">Radiology</span>
+    <span class="research-tag">Pathology</span>
+  </div>
+</div>
 
-### Replacing Course Demographic Stratification in Reference Equations  
-**Developing equitable PFT reference equations using sitting height and body morphology**
-
-Pulmonary function tests (PFTs) have long relied on race-based reference equations, a practice that lacks biological justification and risks perpetuating health disparities. To address this, we developed **ARC**, a framework that identifies individual-level anatomical proxies to explain group-level differences in lung function. Using large-scale data from NHANES and the UK Biobank (**n ≈ 160,000**), we found that **sitting height** consistently outperforms race in explaining lung function variance, while socioeconomic variables contribute minimally.
-
-Building on this, we introduced **ARCPFT**, a new reference equation that replaces race with sitting height and waist circumference. ARCPFT improves prediction accuracy — reducing error by up to **24% in Black individuals** — and generalizes more effectively across Asian and Hispanic populations. This work illustrates how physiologically grounded, data-driven models can advance both **clinical precision** and **equity** in respiratory care.
-
----
-
-### Shortcuts in Image-Based Anomaly Detection  
-**Prompt sensitivity and subgroup performance in Gemini Pro and GPT-4 Vision**
-
-As vision-language models (VLMs) like **Gemini Pro** and **GPT-4 Vision** gain traction in clinical imaging tasks, questions remain about their reliability in detecting anomalies. In this project, I systematically benchmark these models across three diagnostic settings: **skin cancer classification**, **chest X-ray abnormality detection**, and **histopathological diagnosis**. While both models are designed with safety constraints, I show that minor changes in prompt phrasing — such as reframing tasks as "spot-the-difference" or "matching" — elicit **confident diagnostic outputs**, often without appropriate safeguards.
-
-I further examine how **prompt structure**, **image modality**, and **patient subgroup characteristics** (e.g., skin tone, age) influence model performance. While Gemini Pro outperforms GPT-4 overall, both models demonstrate **shortcut learning behaviors** and reduced accuracy on underrepresented subgroups. These findings highlight critical vulnerabilities in current VLM deployment and emphasize the need for **prompt-robustness** and **subgroup fairness** in medical image analysis.
-
----
-<!-- 
-### Demographic Inference and Shortcut Learning in Chest X-Rays  
-**Understanding how deep models infer sensitive attributes from medical images**
-
-Deep learning models can infer demographic attributes — such as age, sex, and race — from chest X-rays with surprising accuracy, even when these features are not visibly encoded. This raises fundamental questions about what cues models rely on. We present **TRACE**, a framework for dissecting the **shortcuts** underlying demographic inference in medical imaging.
-
-TRACE combines **image distortion tests**, **proxy variable modeling** (e.g., BMI, lung size, device use), and **embedding-level transfer analysis** to identify which features contribute to model predictions. Our results show that models often exploit indirect signals: **view position (AP/PA)**, **pixel intensity patterns**, and co-occurring clinical markers — rather than meaningful anatomy. These findings expose hidden pathways for bias and raise concerns about the **fairness and transparency** of deep models used in clinical workflows. -->
+</div>

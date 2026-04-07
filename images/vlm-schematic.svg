@@ -1,0 +1,140 @@
+<svg viewBox="0 0 1600 480" xmlns="http://www.w3.org/2000/svg" font-family="'DM Sans', 'Helvetica Neue', sans-serif">
+  <rect width="1600" height="480" fill="white"/>
+  <rect x="0" y="0" width="1600" height="3" fill="#1a6b5a"/>
+
+  <!-- ===== LEFT: PROBLEM ===== -->
+  <text x="80" y="45" font-size="14" fill="#999" font-weight="700" letter-spacing="0.15em">THE PROBLEM</text>
+
+  <g transform="translate(60, 70)">
+    <text x="220" y="20" font-size="14" fill="#666" text-anchor="middle" font-weight="600">AI reads your medical images -- but accuracy depends on who you are</text>
+
+    <!-- Three imaging domains -->
+    <rect x="15" y="45" width="125" height="90" rx="8" fill="#fdf5f0" stroke="#e8d0c0" stroke-width="1"/>
+    <circle cx="77" cy="82" r="20" fill="#e0b8a0" opacity="0.5"/>
+    <circle cx="77" cy="82" r="10" fill="#c09070" opacity="0.5"/>
+    <text x="77" y="127" font-size="12" fill="#888" text-anchor="middle">Dermatology</text>
+
+    <rect x="160" y="45" width="125" height="90" rx="8" fill="#f0f4f8" stroke="#c8d8e8" stroke-width="1"/>
+    <ellipse cx="210" cy="80" rx="12" ry="22" fill="none" stroke="#7a9ab5" stroke-width="2"/>
+    <ellipse cx="235" cy="80" rx="12" ry="22" fill="none" stroke="#7a9ab5" stroke-width="2"/>
+    <text x="222" y="127" font-size="12" fill="#888" text-anchor="middle">Radiology</text>
+
+    <rect x="305" y="45" width="125" height="90" rx="8" fill="#f5f0f8" stroke="#d0c0e0" stroke-width="1"/>
+    <circle cx="350" cy="74" r="10" fill="#b8a0d0" opacity="0.5"/>
+    <circle cx="370" cy="86" r="12" fill="#a090c0" opacity="0.4"/>
+    <circle cx="358" cy="92" r="8" fill="#c0a8d8" opacity="0.5"/>
+    <text x="367" y="127" font-size="12" fill="#888" text-anchor="middle">Pathology</text>
+
+    <!-- Performance disparity bars -->
+    <g transform="translate(15, 160)">
+      <!-- Abstract person icons instead of skin tone circles -->
+      <circle cx="14" cy="12" r="11" fill="none" stroke="#1a6b5a" stroke-width="2"/>
+      <text x="35" y="16" font-size="12" fill="#666">Patient A</text>
+      <rect x="150" y="3" width="260" height="18" rx="5" fill="#1a6b5a" opacity="0.5"/>
+
+      <circle cx="14" cy="48" r="11" fill="none" stroke="#e8a040" stroke-width="2"/>
+      <text x="35" y="52" font-size="12" fill="#666">Patient B</text>
+      <rect x="150" y="39" width="170" height="18" rx="5" fill="#e8a040" opacity="0.5"/>
+
+      <circle cx="14" cy="84" r="11" fill="none" stroke="#d94030" stroke-width="2"/>
+      <text x="35" y="88" font-size="12" fill="#666">Patient C</text>
+      <rect x="150" y="75" width="90" height="18" rx="5" fill="#d94030" opacity="0.5"/>
+
+      <text x="420" y="16" font-size="11" fill="#1a6b5a" font-weight="600">high accuracy</text>
+      <text x="330" y="52" font-size="11" fill="#e8a040" font-weight="600">moderate</text>
+      <text x="250" y="88" font-size="11" fill="#d94030" font-weight="600">low</text>
+    </g>
+  </g>
+
+  <!-- Punchline -->
+  <text x="280" y="420" font-size="15" fill="#d94030" text-anchor="middle" font-weight="700">Models fail differently depending on who the patient is.</text>
+  <text x="280" y="448" font-size="13" fill="#999" text-anchor="middle">Safety guardrails are trivially bypassed via simple prompt rephrasing.</text>
+
+  <!-- ===== Divider ===== -->
+  <line x1="530" y1="30" x2="530" y2="460" stroke="#e8e8e8" stroke-width="1"/>
+
+  <!-- ===== CENTER: APPROACH ===== -->
+  <text x="590" y="45" font-size="14" fill="#1a6b5a" font-weight="700" letter-spacing="0.15em">OUR APPROACH</text>
+
+  <g transform="translate(560, 70)">
+    <!-- VLM evaluation as the primary -->
+    <text x="250" y="25" font-size="18" fill="#1a6b5a" text-anchor="middle" font-weight="800">Systematic Evaluation + Interpretability</text>
+    <text x="250" y="50" font-size="13" fill="#4a9a8a" text-anchor="middle">Benchmark GPT-4V and Gemini Pro across domains, prompts, and demographics</text>
+
+    <!-- Single clear visual: evaluation framework -->
+    <g transform="translate(25, 75)">
+      <!-- Three evaluation axes as a flow -->
+      <rect x="0" y="0" width="140" height="95" rx="10" fill="#e6f5f0" stroke="#1a6b5a" stroke-width="1.2"/>
+      <text x="70" y="30" font-size="14" fill="#1a6b5a" text-anchor="middle" font-weight="700">Prompt</text>
+      <text x="70" y="48" font-size="14" fill="#1a6b5a" text-anchor="middle" font-weight="700">sensitivity</text>
+      <text x="70" y="72" font-size="11" fill="#4a8a7a" text-anchor="middle">8 prompt strategies</text>
+      <text x="70" y="88" font-size="11" fill="#4a8a7a" text-anchor="middle">across 3 domains</text>
+
+      <rect x="160" y="0" width="140" height="95" rx="10" fill="#e6f5f0" stroke="#1a6b5a" stroke-width="1.2"/>
+      <text x="230" y="30" font-size="14" fill="#1a6b5a" text-anchor="middle" font-weight="700">Subgroup</text>
+      <text x="230" y="48" font-size="14" fill="#1a6b5a" text-anchor="middle" font-weight="700">fairness</text>
+      <text x="230" y="72" font-size="11" fill="#4a8a7a" text-anchor="middle">Skin tone, age,</text>
+      <text x="230" y="88" font-size="11" fill="#4a8a7a" text-anchor="middle">imaging protocol</text>
+
+      <rect x="320" y="0" width="140" height="95" rx="10" fill="#e6f5f0" stroke="#1a6b5a" stroke-width="1.2"/>
+      <text x="390" y="30" font-size="14" fill="#1a6b5a" text-anchor="middle" font-weight="700">Sensitivity /</text>
+      <text x="390" y="48" font-size="14" fill="#1a6b5a" text-anchor="middle" font-weight="700">specificity</text>
+      <text x="390" y="72" font-size="11" fill="#4a8a7a" text-anchor="middle">How tradeoffs shift</text>
+      <text x="390" y="88" font-size="11" fill="#4a8a7a" text-anchor="middle">by group + modality</text>
+    </g>
+
+    <!-- TRACE as subordinate -->
+    <line x1="50" y1="195" x2="450" y2="195" stroke="#e8e8e8" stroke-width="1"/>
+
+    <g transform="translate(25, 215)">
+      <text x="225" y="18" font-size="16" fill="#4a8aad" text-anchor="middle" font-weight="700">TRACE: Interpretability Framework</text>
+      <text x="225" y="42" font-size="13" fill="#6a8a9a" text-anchor="middle">Dissect what models actually learn from medical images</text>
+
+      <!-- Three methods, compact -->
+      <rect x="0" y="60" width="140" height="55" rx="8" fill="#f0f4f8" stroke="#b8d4e3" stroke-width="1"/>
+      <text x="70" y="85" font-size="12" fill="#4a8aad" text-anchor="middle" font-weight="600">Image distortions</text>
+      <text x="70" y="102" font-size="11" fill="#8aacbe" text-anchor="middle">Morphology tests</text>
+
+      <rect x="155" y="60" width="140" height="55" rx="8" fill="#f0f4f8" stroke="#b8d4e3" stroke-width="1"/>
+      <text x="225" y="85" font-size="12" fill="#4a8aad" text-anchor="middle" font-weight="600">Proxy models</text>
+      <text x="225" y="102" font-size="11" fill="#8aacbe" text-anchor="middle">BMI, devices</text>
+
+      <rect x="310" y="60" width="140" height="55" rx="8" fill="#f0f4f8" stroke="#b8d4e3" stroke-width="1"/>
+      <text x="380" y="85" font-size="12" fill="#4a8aad" text-anchor="middle" font-weight="600">Embedding transfer</text>
+      <text x="380" y="102" font-size="11" fill="#8aacbe" text-anchor="middle">Learned features</text>
+    </g>
+  </g>
+
+  <!-- ===== Divider ===== -->
+  <line x1="1080" y1="30" x2="1080" y2="460" stroke="#e8e8e8" stroke-width="1"/>
+
+  <!-- ===== RIGHT: IMPACT ===== -->
+  <text x="1140" y="45" font-size="14" fill="#999" font-weight="700" letter-spacing="0.15em">FINDINGS &amp; IMPACT</text>
+
+  <g transform="translate(1120, 80)">
+    <!-- Finding: guardrails -->
+    <rect x="20" y="0" width="400" height="65" rx="10" fill="#fef5f0" stroke="#e8c0b0" stroke-width="1"/>
+    <text x="220" y="28" font-size="15" fill="#d94030" text-anchor="middle" font-weight="700">Guardrails are trivially bypassed</text>
+    <text x="220" y="50" font-size="13" fill="#d08060" text-anchor="middle">Simple prompt rephrasing circumvents safety constraints</text>
+
+    <!-- Finding: bias is systematic -->
+    <rect x="20" y="82" width="400" height="65" rx="10" fill="#fff8f0" stroke="#e8d0a0" stroke-width="1"/>
+    <text x="220" y="110" font-size="15" fill="#b08020" text-anchor="middle" font-weight="700">Bias is systematic, not random</text>
+    <text x="220" y="132" font-size="13" fill="#c0a050" text-anchor="middle">Darker skin, older patients, specific protocols -- consistent drops</text>
+
+    <!-- Finding: shortcuts -->
+    <rect x="20" y="164" width="400" height="65" rx="10" fill="#f0f4f8" stroke="#b8d4e3" stroke-width="1"/>
+    <text x="220" y="192" font-size="15" fill="#4a8aad" text-anchor="middle" font-weight="700">Models learn shortcuts, not anatomy</text>
+    <text x="220" y="214" font-size="13" fill="#6a8a9a" text-anchor="middle">AP/PA protocol &middot; pixel intensity &middot; "No Finding" label</text>
+
+    <!-- The prescription (solutions-oriented) -->
+    <rect x="20" y="252" width="400" height="80" rx="10" fill="#e6f5f0" stroke="#1a6b5a" stroke-width="1.5"/>
+    <text x="220" y="280" font-size="16" fill="#1a6b5a" text-anchor="middle" font-weight="800">What's needed</text>
+    <text x="220" y="305" font-size="13" fill="#2a9d7e" text-anchor="middle">Subgroup-level auditing before clinical deployment</text>
+    <text x="220" y="324" font-size="13" fill="#2a9d7e" text-anchor="middle">Prompt-robustness testing as standard practice</text>
+
+    <!-- Models evaluated -->
+    <text x="220" y="370" font-size="13" fill="#888" text-anchor="middle" font-weight="600">Models evaluated: GPT-4V (OpenAI) &middot; Gemini Pro (Google)</text>
+    <text x="220" y="392" font-size="12" fill="#bbb" text-anchor="middle">Across dermatology, radiology, and histopathology</text>
+  </g>
+</svg>

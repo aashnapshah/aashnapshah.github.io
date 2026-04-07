@@ -1,0 +1,52 @@
+<svg viewBox="0 0 1100 300" width="1100" height="300" xmlns="http://www.w3.org/2000/svg" font-family="'DM Sans', 'Helvetica Neue', sans-serif">
+  <rect width="1100" height="300" fill="white"/>
+
+  <!-- VLM Evaluation -->
+  <g transform="translate(50, 20)">
+    <text x="235" y="22" font-size="16" fill="#1a6b5a" text-anchor="middle" font-weight="800">Systematic Evaluation</text>
+    <text x="235" y="44" font-size="13" fill="#4a9a8a" text-anchor="middle">GPT-4V (OpenAI) &middot; Gemini Pro (Google) &middot; 3 imaging domains &middot; 8 prompt strategies</text>
+
+    <!-- Three axes -->
+    <rect x="0" y="65" width="150" height="90" rx="10" fill="#e6f5f0" stroke="#1a6b5a" stroke-width="1.2"/>
+    <text x="75" y="95" font-size="15" fill="#1a6b5a" text-anchor="middle" font-weight="700">Prompt</text>
+    <text x="75" y="115" font-size="15" fill="#1a6b5a" text-anchor="middle" font-weight="700">sensitivity</text>
+    <text x="75" y="142" font-size="12" fill="#4a8a7a" text-anchor="middle">How wording changes output</text>
+
+    <rect x="170" y="65" width="150" height="90" rx="10" fill="#e6f5f0" stroke="#1a6b5a" stroke-width="1.2"/>
+    <text x="245" y="95" font-size="15" fill="#1a6b5a" text-anchor="middle" font-weight="700">Subgroup</text>
+    <text x="245" y="115" font-size="15" fill="#1a6b5a" text-anchor="middle" font-weight="700">fairness</text>
+    <text x="245" y="142" font-size="12" fill="#4a8a7a" text-anchor="middle">Skin tone, age, protocol</text>
+
+    <rect x="340" y="65" width="150" height="90" rx="10" fill="#e6f5f0" stroke="#1a6b5a" stroke-width="1.2"/>
+    <text x="415" y="95" font-size="15" fill="#1a6b5a" text-anchor="middle" font-weight="700">Sens. / Spec.</text>
+    <text x="415" y="115" font-size="15" fill="#1a6b5a" text-anchor="middle" font-weight="700">tradeoffs</text>
+    <text x="415" y="142" font-size="12" fill="#4a8a7a" text-anchor="middle">By group and modality</text>
+
+    <!-- TRACE -->
+    <line x1="0" y1="178" x2="490" y2="178" stroke="#e8e8e8" stroke-width="1"/>
+    <text x="235" y="210" font-size="16" fill="#4a8aad" text-anchor="middle" font-weight="700">TRACE: Interpretability</text>
+    <text x="235" y="232" font-size="13" fill="#6a8a9a" text-anchor="middle">Dissecting what models actually learn from medical images</text>
+    <text x="235" y="265" font-size="12" fill="#8aacbe" text-anchor="middle">Image distortions &middot; Proxy feature models &middot; Embedding transfer analysis</text>
+  </g>
+
+  <!-- Impact on the right -->
+  <g transform="translate(620, 20)">
+    <!-- Findings -->
+    <rect x="0" y="0" width="420" height="58" rx="10" fill="#fef5f0" stroke="#e8c0b0" stroke-width="1"/>
+    <text x="210" y="26" font-size="14" fill="#d94030" text-anchor="middle" font-weight="700">Guardrails are trivially bypassed</text>
+    <text x="210" y="46" font-size="12" fill="#d08060" text-anchor="middle">Simple prompt rephrasing circumvents safety constraints</text>
+
+    <rect x="0" y="72" width="420" height="58" rx="10" fill="#f0f4f8" stroke="#b8d4e3" stroke-width="1"/>
+    <text x="210" y="98" font-size="14" fill="#4a8aad" text-anchor="middle" font-weight="700">Models learn shortcuts, not anatomy</text>
+    <text x="210" y="118" font-size="12" fill="#6a8a9a" text-anchor="middle">AP/PA protocol &middot; pixel intensity &middot; "No Finding" label</text>
+
+    <!-- The prescription -->
+    <rect x="0" y="148" width="420" height="70" rx="10" fill="#e6f5f0" stroke="#1a6b5a" stroke-width="1.5"/>
+    <text x="210" y="176" font-size="16" fill="#1a6b5a" text-anchor="middle" font-weight="800">What's needed before deployment</text>
+    <text x="210" y="200" font-size="13" fill="#2a9d7e" text-anchor="middle">Subgroup-level auditing &middot; Prompt-robustness testing as standard</text>
+
+    <!-- Models -->
+    <text x="210" y="250" font-size="13" fill="#888" text-anchor="middle" font-weight="600">Models evaluated: GPT-4V (OpenAI) &middot; Gemini Pro (Google)</text>
+    <text x="210" y="272" font-size="12" fill="#bbb" text-anchor="middle">Across dermatology, radiology, and histopathology</text>
+  </g>
+</svg>

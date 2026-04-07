@@ -1,0 +1,38 @@
+---
+layout: compress
+---
+
+{% include base_path %}
+
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+  </head>
+
+  <body class="portfolio-body">
+
+    {% include browser-upgrade.html %}
+
+    <!-- Floating nav -->
+    <nav class="pf-nav">
+      <div class="pf-nav-inner">
+        <a href="#top" class="pf-nav-name">{{ site.author.name }}</a>
+        <div class="pf-nav-links">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="/gallery/">Gallery</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pf-main">
+      {{ content }}
+    </main>
+
+    {% include scripts.html %}
+
+  </body>
+</html>

@@ -37,63 +37,7 @@
 <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-<!-- Custom Profile Image Styling -->
-<style>
-.author__avatar img {
-  /* Ensure perfect circle */
-  border-radius: 50% !important;
-  width: 250px !important;
-  height: 250px !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  
-  /* Add subtle shadow and border */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-  border: 3px solid #f0f0f0 !important;
-  
-  /* Smooth transitions */
-  transition: all 0.3s ease !important;
-}
-
-.author__avatar img:hover {
-  /* Hover effects */
-  transform: scale(1.05) !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
-  border-color: #007acc !important;
-}
-
-/* Mobile responsive adjustments */
-@media screen and (max-width: 1024px) {
-  .author__avatar img {
-    width: 180px !important;
-    height: 180px !important;
-  }
-}
-
-/* Custom page width improvements */
-.page {
-  max-width: 100% !important;
-}
-
-.page__content {
-  max-width: 100% !important;
-  padding-right: 2em !important;
-}
-
-#main {
-  max-width: 1400px !important;
-}
-
-@media screen and (min-width: 1000px) {
-  .page {
-    margin-left: 350px !important;
-  }
-  
-  .sidebar {
-    width: 350px !important;
-    min-width: 350px !important;
-  }
-}
-</style>
+<!-- Custom Styles -->
+<link rel="stylesheet" href="{{ base_path }}/assets/css/custom.css"/>
 
 <!-- end custom head snippets -->
