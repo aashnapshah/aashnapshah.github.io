@@ -2,6 +2,7 @@
 permalink: /
 layout: portfolio
 title: "Aashna Shah"
+description: "PhD student at Harvard University building machine learning systems that rethink how medicine defines normal."
 author_profile: false
 redirect_from:
   - /about/
