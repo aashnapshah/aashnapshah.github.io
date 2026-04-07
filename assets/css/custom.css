@@ -3,9 +3,9 @@
    ========================================================================== */
 
 :root {
-  --accent: #0d7a5f;
-  --accent-light: #e8f6f1;
-  --accent-mid: #10a37f;
+  --accent: #a51c30;
+  --accent-light: #f9ecee;
+  --accent-mid: #8c1826;
   --text: #1a1a1a;
   --text-sec: #4a4a4a;
   --text-muted: #8a8a8a;
@@ -81,7 +81,7 @@
 /* --- One consistent container --- */
 .pf-container,
 .pf-container-wide {
-  max-width: 860px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 2em;
 }
@@ -124,10 +124,9 @@
 
 /* ==================== HERO ==================== */
 .pf-hero {
-  min-height: calc(100vh - 52px);
   display: flex;
   align-items: center;
-  padding: 4em 0;
+  padding: 3em 0;
 }
 
 .pf-hero-content {
@@ -135,12 +134,13 @@
   margin: 0 auto;
   padding: 0 2em;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 4em;
+  text-align: center;
+  gap: 1.5em;
 }
 
 .pf-hero-text {
-  flex: 1;
 }
 
 .pf-hero-hello {
@@ -173,7 +173,6 @@
   line-height: 1.65;
   color: var(--text-muted);
   margin: 0 0 1.2em 0;
-  max-width: 480px;
 }
 
 .pf-hero-seeking {
@@ -186,7 +185,9 @@
 .pf-hero-links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
+  margin-bottom: 1.5em;
 }
 
 .pf-hero-photo {
@@ -225,6 +226,18 @@
   background: transparent;
   color: var(--text) !important;
   border: 1.5px solid var(--border);
+}
+
+.pf-btn-icon {
+  background: transparent;
+  color: var(--text-sec) !important;
+  font-size: 1.2em;
+  padding: 8px;
+}
+
+.pf-btn-icon:hover {
+  color: var(--accent) !important;
+  background: transparent;
 }
 
 .pf-btn-outline:hover {

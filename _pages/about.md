@@ -11,22 +11,21 @@ redirect_from:
 <!-- ==================== HERO ==================== -->
 <section class="pf-hero" id="top">
   <div class="pf-hero-content">
-    <div class="pf-hero-text">
-      <div class="pf-hero-hello">Hi, I'm</div>
-      <h1 class="pf-hero-name">Aashna Shah</h1>
-      <p class="pf-hero-tagline">I build <span class="pf-accent">machine learning</span> systems that rethink how medicine defines <span class="pf-accent">"normal"</span></p>
-      <p class="pf-hero-sub">PhD Candidate at Harvard Medical School. I train transformers on billions of clinical measurements, build frameworks that replace race with biology in clinical equations, and evaluate foundation models for fairness in medical imaging.</p>
-      <p class="pf-hero-seeking">Graduating 2026 -- seeking research scientist and ML engineering roles in healthcare AI.</p>
-      <div class="pf-hero-links">
-        <a href="mailto:aashnashah@g.harvard.edu" class="pf-btn"><i class="fas fa-envelope"></i> Email</a>
-        <a href="https://github.com/aashnapshah" class="pf-btn pf-btn-outline"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://linkedin.com/in/aashna-p-shah" class="pf-btn pf-btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://scholar.google.com/citations?hl=en&user=7RmZd8QAAAAJ" class="pf-btn pf-btn-outline"><i class="fas fa-graduation-cap"></i> Scholar</a>
-        <a href="/CV.pdf" class="pf-btn pf-btn-outline"><i class="fas fa-file-pdf"></i> CV</a>
-      </div>
-    </div>
     <div class="pf-hero-photo">
       <img src="/images/profile_compressed.png" alt="Aashna Shah">
+    </div>
+    <div class="pf-hero-text">
+      <h1 class="pf-hero-name">Aashna Shah</h1>
+      <div class="pf-hero-links">
+        <a href="mailto:aashnashah@g.harvard.edu" class="pf-btn pf-btn-icon"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/aashnapshah" class="pf-btn pf-btn-icon"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/aashna-p-shah" class="pf-btn pf-btn-icon"><i class="fab fa-linkedin"></i></a>
+        <a href="https://scholar.google.com/citations?hl=en&user=7RmZd8QAAAAJ" class="pf-btn pf-btn-icon"><i class="fas fa-graduation-cap"></i></a>
+        <a href="/CV.pdf" class="pf-btn pf-btn-icon"><i class="fas fa-file-pdf"></i></a>
+      </div>
+      <p class="pf-hero-tagline">I build <span class="pf-accent">machine learning</span> systems that rethink how medicine defines <span class="pf-accent">"normal"</span></p>
+      <p class="pf-hero-sub">PhD Candidate at Harvard University.</p>
+      <p class="pf-hero-seeking">Graduating 2026 — Looking to disrupt healthcare with AI.</p>
     </div>
   </div>
 </section>
@@ -43,22 +42,22 @@ redirect_from:
         <div>
           <div class="pf-edu-degree">PhD Candidate</div>
           <div class="pf-edu-detail">Systems, Synthetic & Quantitative Biology</div>
-          <div class="pf-edu-school">Harvard Medical School <span class="pf-muted">&middot; 2021 -- 2026</span></div>
+          <div class="pf-edu-school">Harvard University <span class="pf-muted">&middot; 2021 — 2026</span></div>
         </div>
       </div>
       <div class="pf-edu-card">
         <div class="pf-edu-icon"><i class="fas fa-graduation-cap"></i></div>
         <div>
           <div class="pf-edu-degree">B.S. Mathematics</div>
-          <div class="pf-edu-school">Northeastern University <span class="pf-muted">&middot; 2016 -- 2021</span></div>
+          <div class="pf-edu-school">Northeastern University <span class="pf-muted">&middot; 2016 — 2021</span></div>
         </div>
       </div>
     </div>
 
     <!-- Bio text -->
     <div class="pf-about-bio">
-      <p>Co-advised by <a href="https://dbmi.hms.harvard.edu/people/arjun-raj-manrai">Raj Manrai</a> and <a href="https://dbmi.hms.harvard.edu/people/chirag-patel">Chirag Patel</a>, I focus on answering a deceptively simple question: <strong>what does it mean to be "normal" in medicine -- and how do those definitions shape clinical decisions?</strong> Using methods ranging from statistical learning to generative modeling, I unpack assumptions historically embedded in the definition of normal and develop more precise, data-driven definitions that better reflect the diversity and heterogeneity of patients in the era of precision medicine.</p>
-      <p>I work across the full stack of clinical ML: from wrangling billions of longitudinal lab measurements across international health systems, to training transformer architectures for sequence prediction, to evaluating foundation models (GPT-4V, Gemini) for fairness in medical imaging. My work spans structured EHR data, medical images, and clinical text -- always with the goal of building systems that are both technically rigorous and clinically deployable.</p>
+      <p>Co-advised by <a href="https://dbmi.hms.harvard.edu/people/arjun-raj-manrai">Raj Manrai</a> and <a href="https://dbmi.hms.harvard.edu/people/chirag-patel">Chirag Patel</a>, I focus on answering a deceptively simple question: <strong>what does it mean to be "normal" in medicine — and how do those definitions shape clinical decisions?</strong> Using methods ranging from statistical learning to generative modeling, I unpack assumptions historically embedded in the definition of normal and develop more precise, data-driven definitions that better reflect the diversity and heterogeneity of patients in the era of precision medicine.</p>
+      <p>I work across the full stack of clinical ML: from wrangling billions of longitudinal lab measurements across international health systems, to training transformer architectures for sequence prediction, to evaluating foundation models (GPT-4V, Gemini) for fairness in medical imaging. My work spans structured EHR data, medical images, and clinical text — always with the goal of building systems that are both technically rigorous and clinically deployable.</p>
     </div>
 
     <!-- Skills: clean horizontal groups -->
@@ -96,7 +95,7 @@ redirect_from:
     <h2 class="pf-section-title">Research</h2>
 
     <div class="pf-research-intro">
-      <p>In the nineteenth century, Adolphe Quetelet applied the Gaussian curve to human traits and introduced <em>l'homme moyen</em> -- the "average man." What began as a statistical abstraction became a clinical standard: the average defined the expected, and deviation from it signaled disease. Two centuries later, this logic still governs medicine. Reference ranges, diagnostic thresholds, and risk scores are derived from population aggregates. Patients are evaluated by proximity to a mean. But what is typical for a population is an imperfect guide to what is normal for a given patient. My research revisits this tension -- asking when population norms fail, what happens when we try to personalize them, and what biases emerge when we hand the task to AI.</p>
+      <p>In the nineteenth century, Adolphe Quetelet applied the Gaussian curve to human traits and introduced <em>l'homme moyen</em> — the "average man." What began as a statistical abstraction became a clinical standard: the average defined the expected, and deviation from it signaled disease. Two centuries later, this logic still governs medicine. Reference ranges, diagnostic thresholds, and risk scores are derived from population aggregates. Patients are evaluated by proximity to a mean. But what is typical for a population is an imperfect guide to what is normal for a given patient. My research revisits this tension — asking when population norms fail, what happens when we try to personalize them, and what biases emerge when we hand the task to AI.</p>
     </div>
 
     <!-- ======= NORMA ======= -->
@@ -107,15 +106,15 @@ redirect_from:
 
 
       <div class="pf-research-text">
-        <p>You get bloodwork done every year. Each time, every result comes back "normal." But your values have been slowly creeping upward -- a trajectory that, for <em>you</em>, signals something is wrong. The population-wide reference interval is too broad to notice. By the time a value finally crosses the threshold, the disease has been developing for months or years.</p>
-        <p>The obvious fix -- comparing you only to yourself -- overcorrects in the other direction, flagging healthy fluctuations as abnormal. Neither population averages nor purely individual baselines solve the problem alone.</p>
+        <p>You get bloodwork done every year. Each time, every result comes back "normal." But your values have been slowly creeping upward — a trajectory that, for <em>you</em>, signals something is wrong. The population-wide reference interval is too broad to notice. By the time a value finally crosses the threshold, the disease has been developing for months or years.</p>
+        <p>The obvious fix — comparing you only to yourself — overcorrects in the other direction, flagging healthy fluctuations as abnormal. Neither population averages nor purely individual baselines solve the problem alone.</p>
       </div>
 
       <!-- Approach + impact visual -->
 
 
       <div class="pf-research-text">
-        <p>We built NORMA, an autoregressive transformer trained on billions of longitudinal lab measurements, that generates reference intervals conditioned on both a patient's own history and population-level expectations for health. It catches disease signals months earlier than population intervals -- without the false-positive burden of purely personalized approaches.</p>
+        <p>We built NORMA, an autoregressive transformer trained on billions of longitudinal lab measurements, that generates reference intervals conditioned on both a patient's own history and population-level expectations for health. It catches disease signals months earlier than population intervals — without the false-positive burden of purely personalized approaches.</p>
       </div>
 
       <div class="pf-research-meta">
@@ -137,15 +136,15 @@ redirect_from:
 
 
       <div class="pf-research-text">
-        <p>You take a breathing test at your doctor's office. The machine measures how much air you can exhale. But before your doctor interprets the result, the system adjusts your expected lung function based on your race -- using a different equation depending on which box you check. This practice has no clear biological basis and dates to the 1840s.</p>
-        <p>Medical societies now recommend removing race, but simply dropping it from the equation -- by averaging or refitting -- doesn't address what race was standing in for. The question isn't whether to remove race. It's what to replace it with.</p>
+        <p>You take a breathing test at your doctor's office. The machine measures how much air you can exhale. But before your doctor interprets the result, the system adjusts your expected lung function based on your race — using a different equation depending on which box you check. This practice has no clear biological basis and dates to the 1840s.</p>
+        <p>Medical societies now recommend removing race, but simply dropping it from the equation — by averaging or refitting — doesn't address what race was standing in for. The question isn't whether to remove race. It's what to replace it with.</p>
       </div>
 
       <!-- Approach + impact visual -->
 
 
       <div class="pf-research-text">
-        <p>We developed ARC, a framework that identifies the individual-level anatomical features -- sitting height, waist circumference -- that race was crudely proxying for. The resulting equations are built on your body, not your demographic group, and they are both more accurate and more equitable -- generalizing to populations where existing models fail.</p>
+        <p>We developed ARC, a framework that identifies the individual-level anatomical features — sitting height, waist circumference — that race was crudely proxying for. The resulting equations are built on your body, not your demographic group, and they are both more accurate and more equitable — generalizing to populations where existing models fail.</p>
       </div>
 
       <div class="pf-research-meta">
@@ -168,15 +167,15 @@ redirect_from:
 
 
       <div class="pf-research-text">
-        <p>You upload a photo of a suspicious mole to an AI health tool. The model gives you a confident answer. But how reliable is that answer -- and would it be different if you had a different skin tone, or were older, or if the image were taken with a different camera? Foundation models like GPT-4V and Gemini Pro are increasingly used for medical image interpretation, but their accuracy varies systematically across patient demographics in ways that are invisible to the user.</p>
-        <p>These models are designed with safety guardrails to prevent clinical diagnoses -- but we show these guardrails are trivially bypassed through simple prompt rephrasing.</p>
+        <p>You upload a photo of a suspicious mole to an AI health tool. The model gives you a confident answer. But how reliable is that answer — and would it be different if you had a different skin tone, or were older, or if the image were taken with a different camera? Foundation models like GPT-4V and Gemini Pro are increasingly used for medical image interpretation, but their accuracy varies systematically across patient demographics in ways that are invisible to the user.</p>
+        <p>These models are designed with safety guardrails to prevent clinical diagnoses — but we show these guardrails are trivially bypassed through simple prompt rephrasing.</p>
       </div>
 
       <!-- Approach + impact visual -->
 
 
       <div class="pf-research-text">
-        <p>We systematically evaluate how vision-language models behave across patient subgroups, prompt strategies, and imaging domains -- and build interpretability frameworks (TRACE) that dissect what these models actually learn from medical images. The finding: models exploit acquisition protocols, pixel intensity patterns, and diagnostic labels as shortcuts, rather than learning meaningful anatomy. We identify what's needed before these models can be safely deployed: subgroup-level auditing and prompt-robustness testing as standard practice.</p>
+        <p>We systematically evaluate how vision-language models behave across patient subgroups, prompt strategies, and imaging domains — and build interpretability frameworks (TRACE) that dissect what these models actually learn from medical images. The finding: models exploit acquisition protocols, pixel intensity patterns, and diagnostic labels as shortcuts, rather than learning meaningful anatomy. We identify what's needed before these models can be safely deployed: subgroup-level auditing and prompt-robustness testing as standard practice.</p>
       </div>
 
       <div class="pf-research-meta">
@@ -242,6 +241,9 @@ redirect_from:
         <div class="pf-pub-title">Advancing Medical Artificial Intelligence Using a Century of Cases</div>
         <div class="pf-pub-meta">T.A. Buckley, R. Conci, P.G. Brodeur, ..., <strong>A.P. Shah</strong>, et al.</div>
         <div class="pf-pub-venue"><em>arXiv</em>, 2025</div>
+        <div class="pf-pub-links">
+          <a href="https://arxiv.org/abs/2509.12194" class="pf-link-btn"><i class="fas fa-file-alt"></i> arXiv</a>
+        </div>
       </div>
 
       <div class="pf-pub">
@@ -263,6 +265,9 @@ redirect_from:
         <div class="pf-pub-title">Chimeric Fatty Acyl-Acyl Carrier Protein Thioesterases Provide Mechanistic Insight into Enzyme Specificity and Expression</div>
         <div class="pf-pub-meta">M. Ziesack, N. Rollins, <strong>A.P. Shah</strong>, et al.</div>
         <div class="pf-pub-venue"><em>Applied and Environmental Microbiology</em>, 2018</div>
+        <div class="pf-pub-links">
+          <a href="https://journals.asm.org/doi/full/10.1128/aem.02868-17" class="pf-link-btn"><i class="fas fa-external-link-alt"></i> ASM</a>
+        </div>
       </div>
 
     </div>
@@ -279,7 +284,7 @@ redirect_from:
     <div class="pf-footer-inner">
       <div>
         <strong>Aashna Shah</strong><br>
-        <span class="pf-muted">PhD Candidate, Harvard Medical School</span>
+        <span class="pf-muted">PhD Candidate, Harvard University</span>
       </div>
       <div class="pf-footer-links">
         <a href="mailto:aashnashah@g.harvard.edu"><i class="fas fa-envelope"></i></a>
