@@ -41,7 +41,7 @@ redirect_from:
         <div class="pf-edu-icon"><i class="fas fa-graduation-cap"></i></div>
         <div>
           <div class="pf-edu-degree">PhD Candidate</div>
-          <div class="pf-edu-detail">Systems, Synthetic & Quantitative Biology</div>
+          <div class="pf-edu-detail"><a href="https://ssqbiophd.hms.harvard.edu/">Systems, Synthetic & Quantitative Biology</a></div>
           <div class="pf-edu-school">Harvard University <span class="pf-muted">&middot; 2021 — 2026</span></div>
         </div>
       </div>
