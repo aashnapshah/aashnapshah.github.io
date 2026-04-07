@@ -21,7 +21,7 @@ baseurl                  : "" # the subpath of your site, e.g. "/blog"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile_compressed.png"
+  avatar           : "profile_pic.jpeg"
   name             : "Aashna Shah"
   pronouns         : "she/her"  
   bio              : "PhD Candidate<br>ML for Clinical Decision Making"
@@ -126,7 +126,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "profile_compressed.png"
+og_image                 : "profile_pic.jpeg"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:

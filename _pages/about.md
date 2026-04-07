@@ -13,7 +13,7 @@ redirect_from:
 <section class="pf-hero" id="top">
   <div class="pf-hero-content">
     <div class="pf-hero-photo">
-      <img src="/images/profile_compressed.png" alt="Aashna Shah">
+      <img src="/images/profile_pic.jpeg" alt="Aashna Shah">
     </div>
     <div class="pf-hero-text">
       <h1 class="pf-hero-name">Aashna Shah</h1>
