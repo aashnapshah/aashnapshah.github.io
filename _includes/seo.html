@@ -8,7 +8,7 @@
 
 {% if page.title %}
   {% if page.title == site.title %}
-    {% assign seo_title = page.title | append: " — PhD Candidate, Harvard University" %}
+    {% assign seo_title = page.title %}
   {% else %}
     {% assign seo_title = page.title | append: " " | append: site.title_separator | append: " " | append: site.title %}
   {% endif %}
