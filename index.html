@@ -113,7 +113,6 @@
     <!-- ================= ABOUT ================= -->
     <section class="hero" id="about">
       <div class="hero__bg" aria-hidden="true"></div>
-      <div class="hero__visual" aria-hidden="true"><img src="/assets/img/visuals/trajectories.svg" alt=""></div>
       <div class="hero__content">
         <h1>Aashna P. Shah, PhD</h1>
         <p class="hero__role"><a href="https://dbmi.hms.harvard.edu/careers/postdoctoral-fellowships/berkowitz-family-living-laboratory" target="_blank" rel="noopener">Berkowitz Postdoctoral Research Fellow</a> · <a href="https://hms.harvard.edu/" target="_blank" rel="noopener">Harvard Medical School</a></p>
@@ -271,27 +270,26 @@
 
     <!-- ================= RESEARCH ================= -->
     <section class="section" id="research">
-      <div class="bg-visual bg-visual--right" aria-hidden="true"><img src="/assets/img/visuals/gmm.svg" alt="" loading="lazy"></div>
       <div class="container">
         <div class="section__header">
           <h2>Research</h2>
         </div>
-        <figure class="concept">
-          <img src="/assets/img/figures/population-vs-individual.svg" alt="Population-defined normal versus individual baseline">
-          <figcaption>I study when broad population averages fail individual patients, and how to personalize them with large-scale data and AI without losing clinical signal.</figcaption>
-        </figure>
+        <p class="research__intro">I study when broad population averages fail individual patients, and how to personalize them with large-scale data and AI without losing clinical signal.</p>
         <div class="theme-list">
           <div class="theme-row">
             <h3 class="theme__title">Learning Representations of Patient Baselines</h3>
             <p class="theme__desc">Population reference intervals miss patients whose values drift within the "normal" range, while purely personal baselines flag healthy variation. I build sequence models over longitudinal laboratory histories that condition on both a patient's own trajectory and population priors, to detect disease earlier and estimate risk more precisely.</p>
+            <img class="theme__fig" src="/assets/img/figures/population-vs-individual.svg" alt="Population-defined normal versus individual baseline" loading="lazy">
           </div>
           <div class="theme-row">
             <h3 class="theme__title">Fairness and Robustness in Clinical Algorithms</h3>
             <p class="theme__desc">Many clinical equations still adjust for race, and foundation models can look accurate while relying on prompt wording, acquisition protocol, or patient demographics. I develop methods that identify the individual-level measurements behind demographic corrections, and I stress-test vision-language and imaging models across subgroups and prompts to expose the shortcuts they learn.</p>
+            <img class="theme__fig" src="/assets/img/figures/fairness.svg" alt="Demographic proxy versus measured drivers" loading="lazy">
           </div>
           <div class="theme-row">
             <h3 class="theme__title">Agentic Systems for Clinical Reasoning and Evaluation</h3>
             <p class="theme__desc">Multi-agent systems that recommend laboratory tests and support diagnostic reasoning, evaluated on Clalit Health Services, MIMIC-IV, and NEJM clinicopathological conference cases, together with scalable methods for judging medical AI outputs against physician judgment.</p>
+            <img class="theme__fig" src="/assets/img/figures/agents.svg" alt="Agentic systems and their evaluation" loading="lazy">
           </div>
         </div>
       </div>
@@ -301,7 +299,6 @@
 
     <!-- ================= PUBLICATIONS ================= -->
     <section class="section" id="publications">
-      <div class="bg-visual bg-visual--left" aria-hidden="true"><img src="/assets/img/visuals/bayes.svg" alt="" loading="lazy"></div>
       <div class="container">
         <div class="section__header">
           <h2>Publications</h2>
