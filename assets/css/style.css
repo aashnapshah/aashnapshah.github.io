@@ -231,3 +231,5 @@ sup { font-size: 0.7em; line-height: 0; }
 @keyframes pubflash { 0%,40% { background: var(--accent-light); } 100% { background: transparent; } }
 .pub-item--flash { animation: pubflash 2s ease; border-radius: 12px; }
 .theme__related .nw { white-space: nowrap; }
+.xp__sub a.xp__accent { color: var(--accent); }
+.xp__sub a.xp__accent:hover { text-decoration: underline; }
