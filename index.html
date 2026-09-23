@@ -157,6 +157,7 @@
             <div class="theme__body">
             <h3 class="theme__title">Learning Representations of Patient Baselines</h3>
             <p class="theme__desc">Learning what &ldquo;normal&rdquo; looks like for each patient from longitudinal laboratory histories and population-scale data, so that meaningful change can be detected earlier. I am especially interested in sequence models that balance a patient&rsquo;s own baseline against population priors.</p>
+            <a class="theme__related" href="#pub-norma">Related publication: <em>Learning Normal Representations for Blood <span class="nw">Biomarkers<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></em></a>
           </div>
           </div>
           <div class="theme-row">
@@ -164,6 +165,7 @@
             <div class="theme__body">
             <h3 class="theme__title">Fairness and Robustness in Clinical Algorithms</h3>
             <p class="theme__desc">Examining how demographic adjustments and model shortcuts shape clinical predictions, and replacing group-level proxies with the individual measurements that actually drive risk. I am especially interested in race-based clinical equations and the robustness of vision-language models across patient populations.</p>
+            <a class="theme__related" href="#pub-arc">Related publication: <em>Disentangling Proxies of Demographic Adjustments in Clinical <span class="nw">Equations<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></em></a>
           </div>
           </div>
           <div class="theme-row">
@@ -171,6 +173,7 @@
             <div class="theme__body">
             <h3 class="theme__title">Agentic Systems for Clinical Reasoning and Evaluation</h3>
             <p class="theme__desc">Building AI agents that reason through diagnostic workups and recommend next steps in care, and developing ways to evaluate them against physician judgment at scale. I am especially interested in laboratory test recommendation and benchmarking on real-world health records.</p>
+            <a class="theme__related" href="#pub-judgment">Related publication: <em>Scaling Clinical Judgment to Evaluate Medical <span class="nw">AI<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></em></a>
           </div>
           </div>
         </div>
@@ -187,7 +190,7 @@
           <p class="section__note"><sup>†</sup> equal contribution · Full list on <a href="https://scholar.google.com/citations?user=7RmZd8QAAAAJ&hl=en" target="_blank" rel="me noopener">Google Scholar</a></p>
         </div>
         <div class="pub-list">
-          <div class="pub-item">
+          <div class="pub-item" id="pub-norma">
             <div class="pub-item__image"><img src="/assets/img/papers/norma.jpg" alt="Figure from &quot;Learning Normal Representations for Blood Biomarkers&quot; by Aashna P. Shah and co-authors" loading="lazy"></div>
             <div class="pub-item__body">
               <div class="pub-item__year">2026</div>
@@ -197,7 +200,7 @@
               <div class="pub-item__links"><a href="https://arxiv.org/abs/2605.18701" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8 12h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>Paper</a><a href="https://norma-tpy0.onrender.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21 3H3a2 2 0 00-2 2v12a2 2 0 002 2h6v2h6v-2h6a2 2 0 002-2V5a2 2 0 00-2-2zm0 14H3V5h18v12z"/></svg>Demo</a><a href="https://github.com/aashnapshah/NORMA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>Code</a></div>
             </div>
           </div>
-          <div class="pub-item">
+          <div class="pub-item" id="pub-judgment">
             <div class="pub-item__image"><img src="/assets/img/papers/judgment.jpg" alt="Figure from &quot;Scaling Clinical Judgment to Evaluate Medical AI&quot; by Aashna P. Shah and co-authors" loading="lazy"></div>
             <div class="pub-item__body">
               <div class="pub-item__year">2026</div>
@@ -237,7 +240,7 @@
               <div class="pub-item__links"><a href="https://dash.harvard.edu/handle/1/42740293" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8 12h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>Dissertation</a></div>
             </div>
           </div>
-          <div class="pub-item">
+          <div class="pub-item" id="pub-arc">
             <div class="pub-item__image"><img src="/assets/img/papers/arc.jpg" alt="Figure from &quot;Disentangling Proxies of Demographic Adjustments in Clinical Equations&quot; by Aashna P. Shah and co-authors" loading="lazy"></div>
             <div class="pub-item__body">
               <div class="pub-item__year">2025</div>
@@ -480,7 +483,8 @@
         e.preventDefault();
         document.getElementById('sidebar').classList.remove('open');
         if (a.getAttribute('href') === '#about') window.scrollTo({ top: 0, behavior: 'smooth' });
-        else t.scrollIntoView({ behavior: 'smooth' });
+        else t.scrollIntoView({ behavior: 'smooth', block: t.classList.contains('pub-item') ? 'center' : 'start' });
+        if (t.classList.contains('pub-item')) { t.classList.remove('pub-item--flash'); void t.offsetWidth; t.classList.add('pub-item--flash'); }
       });
     });
     if (location.hash) {

@@ -223,3 +223,11 @@ sup { font-size: 0.7em; line-height: 0; }
 .theme-row { display: grid; grid-template-columns: 84px 1fr; gap: 1.4rem; align-items: start; }
 .theme__icon { width: 84px; height: 84px; padding: 4px; border-radius: 16px; background: var(--accent-light); }
 @media (max-width: 560px) { .theme-row { grid-template-columns: 56px 1fr; gap: 1rem; } .theme__icon { width: 56px; height: 56px; padding: 6px; border-radius: 12px; } }
+
+.theme__related { display: inline-block; margin-top: 0.7rem; line-height: 1.5; font-size: 0.82rem; font-weight: 500; color: var(--accent); }
+.theme__related em { font-style: normal; font-weight: 400; }
+.theme__related svg { width: 14px; height: 14px; vertical-align: -2px; margin-left: 0.3rem; transition: transform .2s ease; }
+.theme__related:hover svg { transform: translateX(3px); }
+@keyframes pubflash { 0%,40% { background: var(--accent-light); } 100% { background: transparent; } }
+.pub-item--flash { animation: pubflash 2s ease; border-radius: 12px; }
+.theme__related .nw { white-space: nowrap; }
