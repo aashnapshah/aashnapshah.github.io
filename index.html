@@ -478,7 +478,21 @@
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
-    links.forEach(function (a) { a.addEventListener('click', function () { document.getElementById('sidebar').classList.remove('open'); }); });
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var t = document.querySelector(a.getAttribute('href'));
+        if (!t) return;
+        e.preventDefault();
+        document.getElementById('sidebar').classList.remove('open');
+        if (a.getAttribute('href') === '#about') window.scrollTo({ top: 0, behavior: 'smooth' });
+        else t.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+    if (location.hash) {
+      var h = location.hash, target = document.querySelector(h);
+      history.replaceState(null, '', location.pathname + location.search);
+      if (target && h !== '#about') window.addEventListener('load', function () { target.scrollIntoView(); });
+    }
   })();
 </script>
 </body>
