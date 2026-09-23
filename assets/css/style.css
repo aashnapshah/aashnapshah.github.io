@@ -86,7 +86,7 @@ sup { font-size: 0.7em; line-height: 0; }
 .hero__content { position: relative; z-index: 2; max-width: var(--max); margin: 0 auto; padding: 5.5rem 1.5rem 3rem; }
 .hero__profile { display: flex; align-items: flex-start; gap: 2.5rem; margin-top: 2rem; }
 .hero__photo { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; }
-.hero__photo img { width: 176px; height: 176px; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-lg); }
+.hero__photo img { width: 176px; height: 229px; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-lg); }
 .hero__links { display: flex; gap: 0.45rem; flex-wrap: wrap; justify-content: center; }
 .hero__links a { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; color: var(--text-3); border: 1px solid var(--border); border-radius: 50%; background: var(--card); transition: all 0.2s ease; }
 .hero__links a:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
