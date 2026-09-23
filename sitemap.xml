@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://aashna-shah.com/</loc><lastmod>2026-09-23</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://aashna-shah.com/gallery/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://aashna-shah.com/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image><image:loc>https://aashna-shah.com/assets/img/aashna-p-shah-harvard.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://aashna-shah.com/gallery/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image><image:loc>https://aashna-shah.com/assets/img/gallery/aashna-p-shah-precision-medicine-2024.jpg</image:loc></image:image>
+    <image:image><image:loc>https://aashna-shah.com/assets/img/gallery/aashna-p-shah-poster-vision-language-models.jpg</image:loc></image:image>
+    <image:image><image:loc>https://aashna-shah.com/assets/img/gallery/aashna-p-shah-poster-pulmonary-function-tests.jpg</image:loc></image:image>
+    <image:image><image:loc>https://aashna-shah.com/assets/img/gallery/aashna-p-shah-award-day.jpg</image:loc></image:image>
+  </url>
 </urlset>
