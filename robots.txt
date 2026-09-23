@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://aashna-shah.com/sitemap.xml
