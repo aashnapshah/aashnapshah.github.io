@@ -89,6 +89,35 @@
     }
     closeRow(true);
 
+    // The greedy pass often strands one or two photos on the final row, which
+    // reads as a hole in an otherwise flush block. Merge that row back into
+    // the one above and split the combined photos into two rows of roughly
+    // equal aspect, so both justify to the full width.
+    function makeRow(items, last) {
+      var sum = items.reduce(function (t, it) { return t + it.ratio; }, 0);
+      return { items: items, sum: sum, last: last };
+    }
+    if (rows.length > 1) {
+      var tail = rows[rows.length - 1], above = rows[rows.length - 2];
+      var tailWidth = tail.sum * target + GAP * (tail.items.length - 1);
+      if (!tail.big && !above.big && tailWidth < width * 0.8) {
+        var merged = above.items.concat(tail.items);
+        var total = merged.reduce(function (t, it) { return t + it.ratio; }, 0);
+        // Try every split and keep the most even one. Taking the first cut
+        // past halfway would leave four similar photos as 3 + 1, which is the
+        // stranded row all over again.
+        var cut = 1, best = Infinity, running = 0, k;
+        for (k = 1; k < merged.length; k++) {
+          running += merged[k - 1].ratio;
+          var gapness = Math.abs(running - (total - running));
+          if (gapness < best) { best = gapness; cut = k; }
+        }
+        rows.splice(rows.length - 2, 2,
+          makeRow(merged.slice(0, cut), false),
+          makeRow(merged.slice(cut), true));
+      }
+    }
+
     grid.innerHTML = "";
     rows.forEach(function (r) {
       var available = width - GAP * (r.items.length - 1);
