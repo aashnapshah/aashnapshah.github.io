@@ -14,18 +14,16 @@ Visual language
 - the reading column stays clear; each motif fades toward it (CSS mask)
 - no axes, labels, or diagram furniture
 
-Six themes, each a complete drawing sized for one side margin, alternating
-left and right down the page. They were previously drawn as pairs split
-across the reading column, but 760px of text sits between the halves and the
-eye will not bridge that -- it read as fragments of lines at the edges rather
-than one picture.
-  posterior      Bayesian updating on one baseline: a wide prior sharpening
-                 into a tight crimson posterior (About)
-  trajectories   the reference interval climbing (into Research)
-  clusters       three patient clusters, stacked (down Publications)
-  interval       the same interval, falling (into Talks)
-  trace          one heartbeat: P wave, QRS complex, T wave (into Experience)
-  network        inputs to output, one path lit (into Community)
+Six themes, each drawn as a pair: one half in the left margin, one in the
+right, so the pair reads as one picture continuing behind the text.
+  posterior      Bayesian updating on one baseline: a wide prior at the left
+                 narrowing to a tight posterior at the right, three bells
+                 visible in each margin (About)
+  trajectories   the reference interval climbing left to right (into Research)
+  clusters       three patient clusters, right, left, right (down Featured Publications)
+  interval       the same interval, falling left to right (into Talks)
+  trace          one ECG strip: P wave at the left, QRS and T wave at the right (into Experience)
+  network        inputs at the left, output at the right, one path lit (into Community)
 
 Each block replaces the content between matching bg markers in index.html,
 so rerunning this script is safe.
@@ -35,8 +33,6 @@ import math
 import pathlib
 import re
 
-
-MARGIN_W = 300   # canvas width; CSS scales this to the real gutter
 
 T = "var(--text)"
 A = "var(--accent)"
@@ -176,7 +172,7 @@ def fit(body, top, bottom, pad=24):
     return fmt(height), f'<g transform="translate(0 {fmt(pad - top)})">{body}</g>'
 
 
-def motif(name, width, height, body, anchor=None, side="right"):
+def motif(name, width, height, body, anchor=None):
     """One SVG in the background field, spanning the main area.
 
     anchor is a section id, and the page script centres the motif on the
@@ -185,11 +181,9 @@ def motif(name, width, height, body, anchor=None, side="right"):
     (section id, "start") to begin it at the section's top edge. Without an
     anchor the script centres it in the About section.
 
-    side is "left" or "right"; CSS pins the motif to that margin.
-
-    Each motif carries a whisper of crimson wash behind the line work, so the
-    art sits on warm paper rather than flat white. Keep it very low: it stacks
-    with the hero wash at the top of the page.
+    Each motif carries a whisper of crimson wash in its two margins, behind
+    the line work, so the art sits on warm paper rather than flat white.
+    Keep it very low: it stacks with the hero wash at the top of the page.
     """
     if not anchor:
         data = ' data-hero=""'
@@ -198,34 +192,41 @@ def motif(name, width, height, body, anchor=None, side="right"):
     else:
         data = f' data-section="{anchor}"'
 
-    defs = (
-        f'<radialGradient id="wash-{name}" cx=".5" cy=".5" r=".62">'
-        f'<stop offset="0" stop-color="{A}" stop-opacity=".03"/>'
+    defs = "".join(
+        f'<radialGradient id="wash-{name}-{side}" cx="{cx}" cy=".5" r=".55">'
+        f'<stop offset="0" stop-color="{A}" stop-opacity=".026"/>'
         f'<stop offset="1" stop-color="{A}" stop-opacity="0"/>'
         f'</radialGradient>'
+        for side, cx in (("left", "0"), ("right", "1"))
     )
-    wash = f'<rect width="{width}" height="{height}" fill="url(#wash-{name})"/>'
+    wash = "".join(
+        f'<rect width="{width}" height="{height}" fill="url(#wash-{name}-{side})"/>'
+        for side in ("left", "right")
+    )
 
-    out = svg(f"motif motif--{name} motif--{side}", width, height, wash + body, defs)
+    out = svg(f"motif motif--{name}", width, height, wash + body, defs)
     return out.replace("<svg ", f'<svg preserveAspectRatio="none"{data} ', 1)
 
 
-def posterior(peak=64, anchor="research", side="right"):
+def posterior(peak=85, anchor="research"):
     """Bayesian updating along one baseline: a wide prior narrowing to a posterior.
 
-    Five distributions in one margin, the wide low prior first and each one
-    after it narrower and taller, ending in the crimson posterior.
+    Six distributions, three in each margin. The wide, low prior is at the
+    far left and each one after it is narrower and taller, ending in the
+    crimson posterior at the right. The means and spreads are set so all
+    three bells sit whole inside their margin at any viewport width.
     """
-    W = MARGIN_W
+    W = 1240
     # (mean, spread, colour, opacity, stroke width), prior first
     curves = [
-        (52, 30, T, ".10", "1.5"),
-        (104, 22, T, ".13", "1.55"),
-        (152, 16, T, ".16", "1.6"),
-        (196, 11, T, ".21", "1.7"),
-        (238, 7.5, A, ".40", "2.6"),
+        (35, 68, T, ".095", "1.5"),      # prior
+        (100, 50, T, ".125", "1.55"),    # update 1
+        (165, 38, T, ".155", "1.6"),     # update 2
+        (1070, 24, T, ".155", "1.6"),    # update 3
+        (1135, 18, T, ".21", "1.7"),   # update 4
+        (1195, 13, A, ".40", "2.6"),    # posterior
     ]
-    heights = [peak * (30 / s) ** 0.5 for _, s, _, _, _ in curves]
+    heights = [peak * (68 / s) ** 0.5 for _, s, _, _, _ in curves]
 
     pad = 24
     H = max(heights) + 2 * pad
@@ -238,47 +239,49 @@ def posterior(peak=64, anchor="research", side="right"):
             gaussian(x0, x1, mu, s, base, h), colour, opacity, width,
             signal=colour == A, index=i + 1,
         )
-    return motif("posterior", W, fmt(H), body, anchor=anchor, side=side)
+    return motif("posterior", W, fmt(H), body, anchor=anchor)
 
 
-def clusters(side="left"):
-    """Three patient clusters down the margin, faintly linked."""
-    W = MARGIN_W
-    scale = 0.52
-    first, second, third = (96, 92), (196, 246), (104, 400)
+def clusters():
+    """Three patient clusters: right, left, then right again, faintly linked."""
+    W = 1240
+    scale = 1.4
+    first, second, third = (1120, 185), (118, 600), (1122, 1015)
     body = cluster(*first, scale=scale, index=0)
     body += cluster(*second, scale=scale, index=2)
     body += cluster(*third, scale=scale, index=4)
     body += line(
-        smooth([(126, 150), (158, 186), (178, 212)]), T, ".065", "1.3", index=6,
+        smooth([(940, 330), (760, 405), (560, 450), (360, 490), (230, 515)]),
+        T, ".065", "1.3", index=6,
     )
     body += line(
-        smooth([(176, 300), (148, 336), (124, 360)]), T, ".065", "1.3", index=7,
+        smooth([(280, 740), (470, 810), (660, 855), (850, 900), (950, 930)]),
+        T, ".065", "1.3", index=7,
     )
     ry = 112 * scale
     H, body = fit(body, first[1] - ry - 18, third[1] + ry + 18)
-    return motif("clusters", W, H, body, anchor=("publications", "start"), side=side)
+    return motif("clusters", W, H, body, anchor=("publications", "start"))
 
 
 def envelope(rising):
     """A personal reference interval inside the population one.
 
     A wandering centre line, a wide grey envelope, a narrow crimson envelope,
-    and a row of measurements. One point sits outside the personal band but
-    inside the population one: normal for the population, abnormal for the
-    person.
+    and a few measurements in each margin. One point sits outside the
+    personal band but inside the population one: normal for the population,
+    abnormal for the person.
 
     Both longitudinal motifs come from this one shape so they stay
     consistent: rising=True mirrors it vertically so it climbs instead of
     falling.
     """
-    W = MARGIN_W
+    W = 1240
 
     def centre(x):
-        y = 150 + 240 * x / W + 16 * math.sin(x / 22) + 7 * math.sin(x / 10 + 1.3)
+        y = 150 + 240 * x / W + 16 * math.sin(x / 92) + 7 * math.sin(x / 41 + 1.3)
         return 540 - y if rising else y
 
-    xs = list(range(0, W + 1, 6))
+    xs = list(range(0, W + 1, 20))
 
     def band(offset):
         return smooth([(x, centre(x) + offset) for x in xs])
@@ -289,71 +292,74 @@ def envelope(rising):
         + line(band(-22), A, ".26", "2.2", signal=True, index=2)
         + line(band(22), A, ".26", "2.2", signal=True, index=3)
     )
-    samples = [(26, -8), (68, 6), (110, -12), (152, 4), (194, 10), (236, -6), (278, 8)]
+    samples = [(50, -8), (108, 6), (168, -12), (226, 4), (1030, 10), (1090, -6), (1150, 8), (1206, -4)]
     body += hollow([(x, centre(x) + dy, 3) for x, dy in samples], T, ".2")
-    outlier_x = 216
-    outlier = centre(outlier_x) - 50
-    body += dots([(outlier_x, outlier, 3.4)], A, ".48", signal=True)
+    outlier = centre(1120) - 50
+    body += dots([(1120, outlier, 3.4)], A, ".48", signal=True)
 
     top = min(min(centre(x) for x in xs) - 74, outlier - 4)
     return fit(body, top, max(centre(x) for x in xs) + 74)
 
 
-def trajectories(side="left"):
-    """The reference interval, climbing."""
+def trajectories():
+    """The reference interval climbing from left to right."""
     H, body = envelope(rising=True)
-    return motif("trajectories", MARGIN_W, H, body, anchor="research", side=side)
+    return motif("trajectories", 1240, H, body, anchor="research")
 
 
-def interval(side="right"):
-    """The same interval, falling."""
+def interval():
+    """The same interval, falling from left to right."""
     H, body = envelope(rising=False)
-    return motif("interval", MARGIN_W, H, body, anchor="talks", side=side)
+    return motif("interval", 1240, H, body, anchor="talks")
 
 
-def trace(side="left"):
-    """One heartbeat in the margin: P wave, QRS complex, T wave."""
-    W = MARGIN_W
+def trace():
+    """One ECG strip across the page: a P wave in the left margin, the same
+    flat baseline behind the text, the QRS spike and T wave in the right."""
+    W = 1240
     base = 200
     signal = (
-        f"M0 {base} H40 C52 {base} 56 182 68 182 C80 182 84 {base} 96 {base} "
-        f"H128 C138 {base} 141 196 145 188 L151 176 L160 240 L171 110 L182 226 L190 {base} "
-        f"H222 C234 {base} 238 178 250 178 C262 178 266 {base} {W} {base}"
+        f"M0 {base} H70 C90 {base} 96 182 116 182 C136 182 142 {base} 162 {base} "
+        f"H1040 C1056 {base} 1060 196 1066 188 L1074 176 L1088 240 L1106 110 L1122 226 L1134 {base} "
+        f"H1170 C1184 {base} 1188 178 1204 178 C1220 178 1224 {base} {W} {base}"
     )
     body = (
         line(signal, A, ".34", "2.6", signal=True, index=0)
-        + hollow([(28, base, 4), (96, base, 4), (128, base, 4), (190, base, 4)], T, ".16")
-        + dots([(171, 110, 3.6)], A, ".48", signal=True)
+        + hollow([(40, base, 4), (162, base, 4), (1040, base, 4), (1134, base, 4)], T, ".16")
+        + dots([(1106, 110, 3.6)], A, ".48", signal=True)
     )
     H, body = fit(body, 110 - 4, 240 + 2)      # the T wave peak and the S trough
-    return motif("trace", W, H, body, anchor="experience", side=side)
+    return motif("trace", W, H, body, anchor="experience")
 
 
 # -------------------------------------------------------------- hero wash
 
 
-def network(side="right"):
-    """A small network in the margin: inputs to output, one crimson path lit."""
-    W = MARGIN_W
+def network():
+    """A small network across the page: inputs at the left, output at the
+    right, one crimson path lit through it."""
+    W = 1240
     layers = [
-        [(24, 46), (24, 128), (24, 210), (24, 292)],
-        [(112, 87), (112, 169), (112, 251)],
-        [(200, 87), (200, 169), (200, 251)],
-        [(276, 169)],
+        [(22, 55), (22, 165), (22, 275), (22, 385)],
+        [(200, 110), (200, 220), (200, 330)],
+        [(1040, 110), (1040, 220), (1040, 330)],
+        [(1218, 220)],
     ]
     path = [layers[0][2], layers[1][1], layers[2][1], layers[3][0]]
     body = ""
     for a, b in zip(layers, layers[1:]):
+        # Connections between the margins run behind the text.
+        opacity = ".05" if a[0][0] < W / 2 < b[0][0] else ".08"
         for (x1, y1) in a:
             for (x2, y2) in b:
-                body += line(f"M{x1} {y1} L{x2} {y2}", T, ".07", "1.2", index=0)
+                body += line(f"M{x1} {y1} L{x2} {y2}", T, opacity, "1.2", index=0)
     for (x1, y1), (x2, y2) in zip(path, path[1:]):
         body += line(f"M{x1} {y1} L{x2} {y2}", A, ".32", "2.3", signal=True, index=1)
     others = [n for layer in layers for n in layer if n not in path]
     body += hollow([(x, y, 6) for x, y in others], T, ".2")
     body += dots([(x, y, 5) for x, y in path], A, ".46", signal=True)
-    H, body = fit(body, 46 - 7, 292 + 7)
-    return motif("network", W, H, body, anchor="community", side=side)
+    H, body = fit(body, 55 - 7, 385 + 7)
+    return motif("network", W, H, body, anchor="community")
 
 
 def hero():
@@ -390,12 +396,12 @@ def hero():
 def field():
     """The motifs, in page order. Positioning happens in the browser."""
     motifs = [
-        posterior(anchor=None, side="right"),   # the About background
-        trajectories(side="left"),
-        clusters(side="right"),
-        interval(side="left"),
-        trace(side="right"),
-        network(side="left"),
+        posterior(anchor=None),   # the About background
+        trajectories(),
+        clusters(),
+        interval(),
+        trace(),
+        network(),
     ]
     return '<div class="bg-field" aria-hidden="true">' + "".join(motifs) + "</div>"
 
