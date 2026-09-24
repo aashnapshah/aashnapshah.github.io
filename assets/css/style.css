@@ -233,8 +233,14 @@ sup { font-size: 0.7em; line-height: 0; }
    without colliding with the date. */
 .poster__event { font-size: 0.79rem; line-height: 1.5; color: var(--text-2); margin-top: 0.4rem; }
 .poster__event span:last-child { display: block; font-size: 0.76rem; color: var(--text-3); }
+/* The lead poster: larger, centred, caption centred under it. */
+.poster-row--lead { margin-bottom: 1.75rem; }
+.poster-row--lead .poster__image img { height: calc(var(--poster-img-h) * 1.65); }
+.poster-row--lead .poster__body { text-align: center; }
+.poster-row--lead .poster__title { font-size: 0.98rem; }
 @media (max-width: 640px) {
   .poster-row { flex-direction: column; align-items: center; }
+  .poster-row--lead .poster__image img { height: calc(var(--poster-img-h) * 1.25); }
 }
 
 /* ---------- Simple rows (talks / service) ---------- */
