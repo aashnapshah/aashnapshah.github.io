@@ -70,13 +70,13 @@ def svg(css_class, width, height, body, defs=""):
     )
 
 
-def line(d, color=T, opacity=".10", width="1.3", signal=False, index=0):
+def line(d, color=T, opacity=".10", width="1.3", signal=False, index=0, still=False):
     """One line in the shared system.
 
     pathLength normalises every path to 1 so the draw-in animation takes the
     same time whatever the length; index staggers the start (see the CSS).
     """
-    modifier = " art-line--signal" if signal else ""
+    modifier = (" art-line--signal" if signal else "") + (" art-line--still" if still else "")
     return (
         f'<path class="art-line{modifier}" style="--i:{index}" pathLength="1" '
         f'd="{d}" {NS} stroke="{color}" stroke-opacity="{lift(opacity)}" '
@@ -249,7 +249,8 @@ def posterior(peak=85, anchor="research"):
     H = max(heights) + 2 * pad
     base = H - pad
 
-    body = line(f"M0 {fmt(base)} H{W}", T, ".075", "1.2", index=0)
+    # still: the baseline meets the page's own divider and must not bob
+    body = line(f"M0 {fmt(base)} H{W}", T, ".075", "1.2", index=0, still=True)
     for i, ((mu, s, colour, opacity, width), h) in enumerate(zip(curves, heights)):
         x0, x1 = max(0, mu - 4 * s), min(W, mu + 4 * s)
         body += line(
@@ -322,7 +323,9 @@ def envelope(rising):
 def trajectories():
     """The reference interval climbing from left to right."""
     H, body = envelope(rising=True)
-    return motif("trajectories", 1240, H, body, anchor="research")
+    # Centred inside Research rather than on the divider above it: Education is
+    # short, and centred on that divider the figure climbs into the hero bells.
+    return motif("trajectories", 1240, H, body, anchor=("research", "middle"))
 
 
 def interval():

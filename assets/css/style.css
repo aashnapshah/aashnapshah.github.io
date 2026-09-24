@@ -86,6 +86,15 @@ sup { font-size: 0.7em; line-height: 0; }
 /* The mask stays opaque to the right edge on purpose: the drawings run all
    the way out, and fading the last 40px cuts their ends off. */
 
+/* The hero figure alone: its baseline is meant to read as one line with the
+   divider that closes the About section. The divider starts 1.5rem inside the
+   column, so instead of the soft inward fade the mask cuts hard exactly there,
+   and baseline and rule meet end to end. The bells' tails are flat at that
+   x, so the cut is invisible on them. */
+.motif[data-hero] {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(var(--margin) + 1.5rem), transparent calc(var(--margin) + 1.5rem + 1px), transparent calc(100% - var(--margin) - 1.5rem - 1px), #000 calc(100% - var(--margin) - 1.5rem));
+  mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(var(--margin) + 1.5rem), transparent calc(var(--margin) + 1.5rem + 1px), transparent calc(100% - var(--margin) - 1.5rem - 1px), #000 calc(100% - var(--margin) - 1.5rem)); }
+
 /* Motion: each motif fades in, line by line, the first time it scrolls into
    view, then breathes very slowly so the page never looks frozen. Opacity
    only: the earlier stroke-dash "drawing" effect depended on pathLength,
@@ -104,6 +113,7 @@ sup { font-size: 0.7em; line-height: 0; }
 .motif.is-in .art-line {
   animation: fadein 2.8s ease-out calc(var(--i, 0) * 0.22s) both,
              breathe 12s ease-in-out calc(var(--i, 0) * -2.3s) infinite alternate; }
+.motif.is-in .art-line--still { animation: fadein 2.8s ease-out both; }
 .motif.is-in .art-nodes { opacity: 1; }
 .motif .art-nodes--signal circle { animation: pulse 5s ease-in-out infinite alternate; }
 @media (prefers-reduced-motion: reduce) {
