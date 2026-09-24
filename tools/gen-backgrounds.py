@@ -21,9 +21,8 @@ right, so the pair reads as one picture continuing behind the text.
                  visible in each margin (About)
   trajectories   the reference interval climbing left to right (into Research)
   clusters       three patient clusters, right, left, right (down Featured Publications)
-  interval       the same interval, falling left to right (into Talks)
   trace          one ECG strip: P wave at the left, QRS and T wave at the right (into Experience)
-  network        inputs at the left, output at the right, one path lit (into Community)
+  interval       the same interval, falling left to right (into Community)
 
 Each block replaces the content between matching bg markers in index.html,
 so rerunning this script is safe.
@@ -332,7 +331,7 @@ def trajectories():
 def interval():
     """The same interval, falling from left to right."""
     H, body = envelope(rising=False)
-    return motif("interval", 1240, H, body, anchor="talks")
+    return motif("interval", 1240, H, body, anchor="community")
 
 
 def trace():
@@ -424,9 +423,8 @@ def field():
         posterior(anchor=None),   # the About background
         trajectories(),
         clusters(),
-        interval(),
         trace(),
-        network(),
+        interval(),               # network() is kept above but no longer placed
     ]
     return '<div class="bg-field" aria-hidden="true">' + "".join(motifs) + "</div>"
 
