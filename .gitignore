@@ -2,3 +2,6 @@
 _archive/
 .claude/
 node_modules
+
+# Face recognition models — 37MB, re-downloadable from github.com/opencv/opencv_zoo
+tools/models/
