@@ -90,7 +90,9 @@ sup { font-size: 0.7em; line-height: 0; }
    then breathes very slowly so the page never looks frozen. The nodes fade
    in behind the lines and the crimson ones pulse. All of it off for anyone
    who asks for reduced motion. */
-@keyframes draw { to { stroke-dashoffset: 0; } }
+/* Explicit from: the resting value is already 0, so a to-only keyframe
+   animates 0 to 0 and the lines pop in instead of drawing in. */
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes breathe { to { transform: translateY(-3px); } }
 @keyframes pulse { to { fill-opacity: .7; } }
 /* Drawn by default; hidden only while a motif is still waiting its turn.

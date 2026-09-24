@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css?v=7d95d1f2">
+  <link rel="stylesheet" href="/assets/css/style.css?v=35431b91">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -559,15 +559,34 @@
     }
     function watch() {
       if (!window.IntersectionObserver) return revealAll();
+      var observed = false;
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (!e.isIntersecting) return;
+          observed = true;
           e.target.classList.add('is-in');
           io.unobserve(e.target);
         });
       }, { rootMargin: '120px 0px' });
       field.querySelectorAll('.motif').forEach(function (m) { io.observe(m); });
-      setTimeout(revealAll, 2500);
+      // Safety net only. If the observer has revealed nothing at all 2.5s
+      // after the page is first *looked at*, it is not working, so show
+      // everything. Counting from first sight rather than from load matters:
+      // observers do not deliver in a hidden tab, so a page opened in the
+      // background would otherwise have everything popped in, un-drawn, by
+      // the time anyone switched to it.
+      function armSafetyNet() {
+        setTimeout(function () { if (!observed) revealAll(); }, 2500);
+      }
+      if (document.visibilityState === 'visible') {
+        armSafetyNet();
+      } else {
+        document.addEventListener('visibilitychange', function onSeen() {
+          if (document.visibilityState !== 'visible') return;
+          document.removeEventListener('visibilitychange', onSeen);
+          armSafetyNet();
+        });
+      }
     }
     window.addEventListener('resize', place);
     window.addEventListener('load', place);
