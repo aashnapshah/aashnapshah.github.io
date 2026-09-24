@@ -557,7 +557,8 @@
     function revealAll() {
       field.querySelectorAll('.motif').forEach(function (m) { m.classList.add('is-in'); });
     }
-    if (window.IntersectionObserver) {
+    function watch() {
+      if (!window.IntersectionObserver) return revealAll();
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (!e.isIntersecting) return;
@@ -566,14 +567,17 @@
         });
       }, { rootMargin: '120px 0px' });
       field.querySelectorAll('.motif').forEach(function (m) { io.observe(m); });
-      setTimeout(revealAll, 6000);
-    } else {
-      revealAll();
+      setTimeout(revealAll, 2500);
     }
     window.addEventListener('resize', place);
     window.addEventListener('load', place);
     if (window.ResizeObserver) new ResizeObserver(place).observe(document.body);
     place();
+    // Observe only once the motifs have been placed and laid out. Set up any
+    // earlier and the observer's one initial pass sees nothing intersecting,
+    // and without a scroll it never looks again -- the artwork then waits on
+    // the fallback timer instead of drawing.
+    requestAnimationFrame(function () { requestAnimationFrame(watch); });
   })();
 </script>
 </body>
