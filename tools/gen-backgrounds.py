@@ -197,17 +197,18 @@ def motif(name, width, height, body, anchor=None, baseline=None, scale=None):
     """
     if not anchor:
         data = ' data-hero=""'
-        # The page script sits the hero figure's baseline exactly on the divider
-        # that closes the About section, and stretches it a little taller. Both
-        # live here, not in the markup, so a regeneration cannot lose them.
-        if baseline is not None:
-            data += f' data-baseline="{fmt(baseline)}"'
-        if scale is not None:
-            data += f' data-scale="{scale}"'
     elif isinstance(anchor, tuple):
         data = f' data-section="{anchor[0]}" data-align="{anchor[1]}"'
     else:
         data = f' data-section="{anchor}"'
+    # A figure with a baseline is sat on its divider by that baseline (rather
+    # than centred on it by its box), masked to meet the rule end to end, and
+    # held still. scale stretches it taller. Both live here, not in the
+    # markup, so a regeneration cannot lose them.
+    if baseline is not None:
+        data += f' data-baseline="{fmt(baseline)}"'
+    if scale is not None:
+        data += f' data-scale="{scale}"'
 
     defs = "".join(
         f'<radialGradient id="wash-{name}-{side}" cx="{cx}" cy=".5" r=".55">'
@@ -345,12 +346,15 @@ def trace():
         f"H1170 C1184 {base} 1188 178 1204 178 C1220 178 1224 {base} {W} {base}"
     )
     body = (
-        line(signal, A, ".34", "2.6", signal=True, index=0)
+        # still: the flat segments run into the page's divider and must not bob
+        line(signal, A, ".34", "2.6", signal=True, index=0, still=True)
         + hollow([(40, base, 4), (162, base, 4), (1040, base, 4), (1134, base, 4)], T, ".16")
         + dots([(1106, 110, 3.6)], A, ".48", signal=True)
     )
-    H, body = fit(body, 110 - 4, 240 + 2)      # the T wave peak and the S trough
-    return motif("trace", W, H, body, anchor="experience")
+    top_extent, pad = 110 - 4, 24               # the T wave peak; fit() pads by 24
+    H, body = fit(body, top_extent, 240 + 2, pad)   # ... down to the S trough
+    return motif("trace", W, H, body, anchor="experience",
+                 baseline=base + pad - top_extent)
 
 
 # -------------------------------------------------------------- hero wash
