@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css?v=35431b91">
+  <link rel="stylesheet" href="/assets/css/style.css?v=8bb87adc">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -554,8 +554,15 @@
     // simply never appeared. A motif that is never observed is revealed
     // anyway on a timer, so the failure mode is "drawn without animating"
     // rather than "not there".
+    // draw is 1.9s plus up to ~0.85s of per-line stagger; settle a little after.
+    var SETTLE_MS = 3200;
+    function enter(m) {
+      if (m.classList.contains('is-in')) return;
+      m.classList.add('is-in');
+      setTimeout(function () { m.classList.add('is-drawn'); }, SETTLE_MS);
+    }
     function revealAll() {
-      field.querySelectorAll('.motif').forEach(function (m) { m.classList.add('is-in'); });
+      field.querySelectorAll('.motif').forEach(enter);
     }
     function watch() {
       if (!window.IntersectionObserver) return revealAll();
@@ -564,7 +571,7 @@
         entries.forEach(function (e) {
           if (!e.isIntersecting) return;
           observed = true;
-          e.target.classList.add('is-in');
+          enter(e.target);
           io.unobserve(e.target);
         });
       }, { rootMargin: '120px 0px' });
