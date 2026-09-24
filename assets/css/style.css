@@ -21,7 +21,7 @@
   --side: 0px;
   --radius: 12px;
   --radius-lg: 18px;
-  --poster-img-h: 184px;
+  --poster-img-h: 240px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -216,8 +216,12 @@ sup { font-size: 0.7em; line-height: 0; }
    own card's width. Emphasis is order (newest first), not size. */
 /* Sized so all three sit in one row inside the 800px column: at 184px tall
    the posters sum to ~735px, plus gaps, using the column's own side padding. */
-.poster-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 1.5rem 1rem; margin: 0 -1.5rem; }
-.poster { display: flex; flex-direction: column; width: fit-content; max-width: 100%; }
+/* The horizontal gap must exceed the two captions' 1rem overhangs, or the
+   pair's captions meet in the middle with no space between them. */
+.poster-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 1.5rem 3rem; margin: 0 -1.5rem; }
+/* Card centred within its item: a caption floor can make the item wider than
+   the card, and centring the row by items then leaves the cards off-centre. */
+.poster { display: flex; flex-direction: column; align-items: center; width: fit-content; max-width: 100%; }
 .poster__image { display: block; width: fit-content; max-width: 100%; border: 1px solid var(--border); border-radius: var(--radius); background: #fff; padding: 8px; box-shadow: var(--shadow-sm); transition: box-shadow 0.25s ease; }
 .poster__image:hover { box-shadow: var(--shadow-md); }
 .poster__image:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
@@ -226,17 +230,25 @@ sup { font-size: 0.7em; line-height: 0; }
 .poster__image img { width: auto; max-width: 100%; height: var(--poster-img-h); object-fit: contain; border-radius: 4px; display: block; }
 /* width:0 + min-width:100% -- the caption contributes nothing to the card's
    intrinsic width, then stretches to the width the poster set. */
-/* ... with a floor, so a narrow portrait poster's caption is not a sliver. */
-.poster__body { margin-top: 0.8rem; width: 0; min-width: max(100%, 180px); }
+/* ... and it may hang 1rem past the card on each side, so a narrow portrait
+   poster's caption is not a sliver. The overhang is symmetric and, being
+   negative margin against a percentage min-width, adds nothing to the item's
+   intrinsic width -- so items equal cards and the row centres exactly. */
+.poster__body { margin: 0.8rem -1rem 0; width: 0; min-width: calc(100% + 2rem); text-align: center; }
 .poster__title { font-weight: 600; font-size: 0.88rem; line-height: 1.4; color: var(--text); }
-/* Event name on its own line, date and place under it: long venue names wrap
-   without colliding with the date. */
+/* One quiet line: venue · date. Anything more under a narrow card reads as
+   clutter; the poster itself carries the rest. */
 .poster__event { font-size: 0.79rem; line-height: 1.5; color: var(--text-2); margin-top: 0.4rem; }
-.poster__event span:last-child { display: block; font-size: 0.76rem; color: var(--text-3); }
+.poster__event span:last-child { color: var(--text-3); }
+.poster__event span:last-child::before { content: " \00b7 "; color: var(--text-3); }
+.poster__award { margin-top: 0.15rem; font-size: 0.76rem; font-weight: 500; color: var(--accent); }
 /* The lead poster: larger, centred, caption centred under it. */
 .poster-row--lead { margin-bottom: 1.75rem; }
-.poster-row--lead .poster__image img { height: calc(var(--poster-img-h) * 1.65); }
-.poster-row--lead .poster__body { text-align: center; }
+/* 1.83 makes the lead card exactly as wide as the pair below it (cards plus
+   the 3rem gap) at the current poster ratios (4:3 lead; 3:2 and 2:3 pair),
+   so the block reads as one shape. Re-tune if a poster is swapped or the
+   shared height changes: lead height = 1.625 x shared height + 48px. */
+.poster-row--lead .poster__image img { height: calc(var(--poster-img-h) * 1.83); }
 .poster-row--lead .poster__title { font-size: 0.98rem; }
 @media (max-width: 640px) {
   .poster-row { flex-direction: column; align-items: center; }
