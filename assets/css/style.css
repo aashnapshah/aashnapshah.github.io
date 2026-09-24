@@ -21,7 +21,7 @@
   --side: 0px;
   --radius: 12px;
   --radius-lg: 18px;
-  --poster-img-h: 234px;
+  --poster-img-h: 184px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -209,43 +209,32 @@ sup { font-size: 0.7em; line-height: 0; }
 @media (max-width: 640px) { .pub-item { grid-template-columns: 92px 1fr; gap: 1rem; } }
 @media (max-width: 420px) { .pub-item { grid-template-columns: 1fr; } .pub-item__image { max-width: 120px; } }
 
-/* ---------- Posters ----------
-   The first poster runs wide and centred, the other two share a row below.
-   Each preview sits in a framed bubble; hairlines separate the entries and
-   the two columns. */
-.poster-feature { margin: 0 0 1.75rem; padding-bottom: 1.75rem; border-bottom: 1px solid var(--border); }
-.poster-grid { display: grid; grid-template-columns: 1fr 1fr; }
-.poster-grid .poster { padding-right: 1.6rem; }
-.poster-grid .poster + .poster { padding: 0 0 0 1.6rem; border-left: 1px solid var(--border); }
-
-.poster__image { display: block; border: 1px solid var(--border); border-radius: var(--radius); background: #fff; padding: 8px; box-shadow: var(--shadow-sm); transition: box-shadow 0.25s ease; }
+/* ---------- Talks & posters ----------
+   Three posters in one row at one shared height. Each card hugs its poster
+   -- three different aspect ratios in cards that fill a column always leave
+   a white field around the narrow one -- and each caption is held to its
+   own card's width. Emphasis is order (newest first), not size. */
+/* Sized so all three sit in one row inside the 800px column: at 184px tall
+   the posters sum to ~735px, plus gaps, using the column's own side padding. */
+.poster-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 1.5rem 1rem; margin: 0 -1.5rem; }
+.poster { display: flex; flex-direction: column; width: fit-content; max-width: 100%; }
+.poster__image { display: block; width: fit-content; max-width: 100%; border: 1px solid var(--border); border-radius: var(--radius); background: #fff; padding: 8px; box-shadow: var(--shadow-sm); transition: box-shadow 0.25s ease; }
 .poster__image:hover { box-shadow: var(--shadow-md); }
-/* One height for every poster image, so the three cards line up. Using a set
-   height rather than an aspect ratio because the feature card is twice the
-   width of the two below it, so a shared ratio would make it twice as tall. */
-.poster__image img { width: 100%; height: var(--poster-img-h); object-fit: contain; border-radius: 4px; }
-/* The featured bubble spans the text column; the preview inside stays small
-   and centred, so the frame has room around it. */
-/* The feature card hugs its poster. Full column width with the image held
-   to the shared height left a large empty white field around a small poster;
-   the two cards below fill their width, so this one fits its content instead. */
-.poster-feature .poster__image { padding: 8px; width: fit-content; max-width: 100%; margin: 0 auto; }
-.poster-feature .poster__image img { width: auto; max-width: 100%; }
 .poster__image:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-.poster__body { margin-top: 0.9rem; }
-.poster__title { font-weight: 600; font-size: 0.95rem; line-height: 1.4; color: var(--text); }
-.poster-grid .poster__title { font-size: 0.88rem; }
+/* One height for every poster; width follows the poster's own ratio, which
+   the img's width/height attributes make known before the image loads. */
+.poster__image img { width: auto; max-width: 100%; height: var(--poster-img-h); object-fit: contain; border-radius: 4px; display: block; }
+/* width:0 + min-width:100% -- the caption contributes nothing to the card's
+   intrinsic width, then stretches to the width the poster set. */
+/* ... with a floor, so a narrow portrait poster's caption is not a sliver. */
+.poster__body { margin-top: 0.8rem; width: 0; min-width: max(100%, 180px); }
+.poster__title { font-weight: 600; font-size: 0.88rem; line-height: 1.4; color: var(--text); }
 /* Event name on its own line, date and place under it: long venue names wrap
    without colliding with the date. */
-.poster__event { font-size: 0.83rem; line-height: 1.5; color: var(--text-2); margin-top: 0.4rem; }
-.poster-grid .poster__event { font-size: 0.79rem; }
-.poster__event span:last-child { display: block; font-size: 0.79rem; color: var(--text-3); }
-.poster-grid .poster__event span:last-child { font-size: 0.76rem; }
-@media (max-width: 600px) {
-  .poster-grid { grid-template-columns: 1fr; }
-  .poster-grid .poster { padding: 0 0 1.75rem; }
-  .poster-grid .poster + .poster { padding: 1.75rem 0 0; border-left: none; border-top: 1px solid var(--border); }
+.poster__event { font-size: 0.79rem; line-height: 1.5; color: var(--text-2); margin-top: 0.4rem; }
+.poster__event span:last-child { display: block; font-size: 0.76rem; color: var(--text-3); }
+@media (max-width: 640px) {
+  .poster-row { flex-direction: column; align-items: center; }
 }
 
 /* ---------- Simple rows (talks / service) ---------- */
