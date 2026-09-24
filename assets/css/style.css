@@ -86,34 +86,28 @@ sup { font-size: 0.7em; line-height: 0; }
 /* The mask stays opaque to the right edge on purpose: the drawings run all
    the way out, and fading the last 40px cuts their ends off. */
 
-/* Motion: each motif draws itself once, the first time it scrolls into view,
-   then breathes very slowly so the page never looks frozen. The nodes fade
-   in behind the lines and the crimson ones pulse. All of it off for anyone
-   who asks for reduced motion. */
-/* Explicit from: the resting value is already 0, so a to-only keyframe
-   animates 0 to 0 and the lines pop in instead of drawing in. */
-@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+/* Motion: each motif fades in, line by line, the first time it scrolls into
+   view, then breathes very slowly so the page never looks frozen. Opacity
+   only: the earlier stroke-dash "drawing" effect depended on pathLength,
+   non-scaling-stroke and dash arithmetic agreeing, and they did not in every
+   browser, leaving lines part-rendered. A fade cannot fail that way.
+   Slow on purpose: about 4s from first line to last. All of it off for
+   anyone who asks for reduced motion. */
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
 @keyframes breathe { to { transform: translateY(-3px); } }
 @keyframes pulse { to { fill-opacity: .7; } }
-/* Drawn by default; hidden only while a motif is still waiting its turn.
-   The other way round, any motif the observer misses stays invisible. */
-.motif .art-line { stroke-dasharray: 1; stroke-dashoffset: 0; }
-.motif:not(.is-in) .art-line { stroke-dashoffset: 1; }
-/* Settled: the state the page rests on once a figure's draw has ended.
-   Offset pinned at 0 (!important outranks a running animation), so nothing
-   can leave a line part-rendered. The dash stays as it is: at offset 0 a
-   single full-length dash is the complete line, so pinning it is invisible,
-   whereas swapping to dasharray:none or re-declaring the breathe animation
-   here restarts breathe mid-cycle and every line visibly ticks. */
-.motif.is-drawn .art-line { stroke-dashoffset: 0 !important; transition: stroke-dashoffset .45s ease-out; }
-.motif .art-nodes { opacity: 0; transition: opacity 1s ease 0.9s; }
+/* Visible by default; hidden only while a motif is still waiting its turn,
+   so a motif the observer misses can never stay invisible. */
+.motif .art-line { opacity: 1; }
+.motif:not(.is-in) .art-line { opacity: 0; }
+.motif .art-nodes { opacity: 0; transition: opacity 1.8s ease 1.4s; }
 .motif.is-in .art-line {
-  animation: draw 1.9s cubic-bezier(.25, .6, .2, 1) calc(var(--i, 0) * 0.12s) forwards,
+  animation: fadein 2.8s ease-out calc(var(--i, 0) * 0.22s) both,
              breathe 12s ease-in-out calc(var(--i, 0) * -2.3s) infinite alternate; }
 .motif.is-in .art-nodes { opacity: 1; }
 .motif .art-nodes--signal circle { animation: pulse 5s ease-in-out infinite alternate; }
 @media (prefers-reduced-motion: reduce) {
-  .motif .art-line { stroke-dashoffset: 0; animation: none !important; }
+  .motif .art-line { opacity: 1; animation: none !important; }
   .motif .art-nodes { opacity: 1; transition: none; }
   .motif .art-nodes--signal circle { animation: none; }
 }
