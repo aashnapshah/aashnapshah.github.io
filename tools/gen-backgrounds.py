@@ -211,7 +211,7 @@ def motif(name, width, height, body, anchor=None, baseline=None, scale=None):
 
     defs = "".join(
         f'<radialGradient id="wash-{name}-{side}" cx="{cx}" cy=".5" r=".55">'
-        f'<stop offset="0" stop-color="{A}" stop-opacity=".026"/>'
+        f'<stop offset="0" stop-color="{A}" stop-opacity=".045"/>'
         f'<stop offset="1" stop-color="{A}" stop-opacity="0"/>'
         f'</radialGradient>'
         for side, cx in (("left", "0"), ("right", "1"))
