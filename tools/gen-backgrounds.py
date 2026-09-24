@@ -34,6 +34,16 @@ import pathlib
 import re
 
 
+# Global multiplier on every stroke and fill opacity. The authored values were
+# tuned for a page that read as too white; this lifts the whole system in
+# proportion so the hierarchy between lines is unchanged.
+PRESENCE = 1.35
+
+
+def lift(opacity):
+    return f"{min(1.0, float(opacity) * PRESENCE):.3f}".rstrip("0").rstrip(".")
+
+
 T = "var(--text)"
 A = "var(--accent)"
 NS = (
@@ -69,7 +79,7 @@ def line(d, color=T, opacity=".10", width="1.3", signal=False, index=0):
     modifier = " art-line--signal" if signal else ""
     return (
         f'<path class="art-line{modifier}" style="--i:{index}" pathLength="1" '
-        f'd="{d}" {NS} stroke="{color}" stroke-opacity="{opacity}" '
+        f'd="{d}" {NS} stroke="{color}" stroke-opacity="{lift(opacity)}" '
         f'stroke-width="{width}"/>'
     )
 
@@ -111,7 +121,7 @@ def dots(circles, fill=T, opacity=".17", signal=False):
     body = "".join(
         f'<circle cx="{fmt(x)}" cy="{fmt(y)}" r="{r}"/>' for x, y, r in circles
     )
-    return f'<g class="art-nodes{modifier}" fill="{fill}" fill-opacity="{opacity}">{body}</g>'
+    return f'<g class="art-nodes{modifier}" fill="{fill}" fill-opacity="{lift(opacity)}">{body}</g>'
 
 
 def hollow(circles, stroke=T, opacity=".18"):
@@ -121,7 +131,7 @@ def hollow(circles, stroke=T, opacity=".18"):
     )
     return (
         f'<g class="art-nodes" fill="var(--bg)" stroke="{stroke}" '
-        f'stroke-opacity="{opacity}" stroke-width="1.5">{body}</g>'
+        f'stroke-opacity="{lift(opacity)}" stroke-width="1.5">{body}</g>'
     )
 
 
@@ -172,7 +182,7 @@ def fit(body, top, bottom, pad=24):
     return fmt(height), f'<g transform="translate(0 {fmt(pad - top)})">{body}</g>'
 
 
-def motif(name, width, height, body, anchor=None):
+def motif(name, width, height, body, anchor=None, baseline=None, scale=None):
     """One SVG in the background field, spanning the main area.
 
     anchor is a section id, and the page script centres the motif on the
@@ -187,6 +197,13 @@ def motif(name, width, height, body, anchor=None):
     """
     if not anchor:
         data = ' data-hero=""'
+        # The page script sits the hero figure's baseline exactly on the divider
+        # that closes the About section, and stretches it a little taller. Both
+        # live here, not in the markup, so a regeneration cannot lose them.
+        if baseline is not None:
+            data += f' data-baseline="{fmt(baseline)}"'
+        if scale is not None:
+            data += f' data-scale="{scale}"'
     elif isinstance(anchor, tuple):
         data = f' data-section="{anchor[0]}" data-align="{anchor[1]}"'
     else:
@@ -239,7 +256,8 @@ def posterior(peak=85, anchor="research"):
             gaussian(x0, x1, mu, s, base, h), colour, opacity, width,
             signal=colour == A, index=i + 1,
         )
-    return motif("posterior", W, fmt(H), body, anchor=anchor)
+    return motif("posterior", W, fmt(H), body, anchor=anchor,
+                 baseline=base, scale=1.3 if anchor is None else None)
 
 
 def clusters():

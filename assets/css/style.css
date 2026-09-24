@@ -16,7 +16,7 @@
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-mono: "SF Mono", Menlo, Consolas, monospace;
-  --max: 760px;
+  --max: 800px;
   --nav-h: 56px;
   --side: 0px;
   --radius: 12px;
@@ -128,7 +128,7 @@ sup { font-size: 0.7em; line-height: 0; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; overflow: hidden; }
-.hero__content { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: 5.5rem 1.5rem 3rem; }
+.hero__content { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: 4.25rem 1.5rem 2.25rem; }
 .hero__profile { display: flex; align-items: flex-start; gap: 2.5rem; margin-top: 2rem; }
 .hero__photo { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; }
 .hero__photo img { width: 176px; height: 229px; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-lg); }
@@ -143,8 +143,8 @@ sup { font-size: 0.7em; line-height: 0; }
 @media (max-width: 600px) { .hero__profile { flex-direction: column; gap: 1.5rem; } }
 
 /* ---------- Sections ---------- */
-.section { padding: 3.25rem 0 2.25rem; position: relative; }
-.section__header { text-align: center; margin-bottom: 2.25rem; }
+.section { padding: 2.5rem 0 1.75rem; position: relative; }
+.section__header { text-align: center; margin-bottom: 1.5rem; }
 .section__note { font-size: 0.82rem; color: var(--text-3); margin-top: 0.5rem; }
 .divider { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
 .divider::after { content: ""; display: block; height: 1px; background: var(--border); }
@@ -166,18 +166,18 @@ sup { font-size: 0.7em; line-height: 0; }
 
 /* ---------- Research themes ---------- */
 .theme-list { display: flex; flex-direction: column; }
-.theme-row { padding: 1.6rem 0; border-bottom: 1px solid var(--border); }
+.theme-row { padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
 .theme-row:first-child { padding-top: 0.25rem; }
 .theme-row:last-child { border-bottom: none; padding-bottom: 0; }
 .theme__title { font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 0.4rem; }
 .theme__desc { font-size: 0.87rem; line-height: 1.7; margin-bottom: 0; }
 
 /* ---------- Publications (by year, with thumbnails) ---------- */
-.pub-year { margin-bottom: 2.25rem; }
+.pub-year { margin-bottom: 1.5rem; }
 .pub-year:last-child { margin-bottom: 0; }
 .pub-year__label { font-size: 1.15rem; font-weight: 600; color: var(--text-3); padding-bottom: 0.5rem; margin-bottom: 0.25rem; border-bottom: 1px solid var(--border); }
 .pub-list { display: flex; flex-direction: column; }
-.pub-item { display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem; padding: 1.35rem 0; border-bottom: 1px solid var(--border); align-items: start; }
+.pub-item { display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem; padding: 1.05rem 0; border-bottom: 1px solid var(--border); align-items: start; }
 .pub-item:last-child { border-bottom: none; }
 .pub-item__image { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: #fff; aspect-ratio: 4 / 5; padding: 8px; display: flex; align-items: center; justify-content: center; }
 .pub-item__image img { width: 100%; height: 100%; object-fit: contain; display: block; transition: transform 0.2s ease; }
@@ -237,7 +237,7 @@ sup { font-size: 0.7em; line-height: 0; }
 
 /* ---------- Simple rows (talks / service) ---------- */
 .rows { display: flex; flex-direction: column; }
-.row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
 .row:first-child { padding-top: 0; }
 .row:last-child { border-bottom: none; }
 .row__main { flex: 1 1 320px; }
@@ -285,7 +285,7 @@ sup { font-size: 0.7em; line-height: 0; }
 
 /* ---------- Research experience rows ---------- */
 .xp-list { display: flex; flex-direction: column; }
-.xp { display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--border); }
+.xp { display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; padding: 0.8rem 0; border-bottom: 1px solid var(--border); }
 .xp:first-child { padding-top: 0; }
 .xp:last-child { border-bottom: none; padding-bottom: 0; }
 .xp__main { flex: 1 1 auto; min-width: 0; }
