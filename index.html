@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css?v=2e4dc707">
+  <link rel="stylesheet" href="/assets/css/style.css?v=09ed1706">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -546,24 +546,30 @@
         m.style.top = Math.max(0, lineY - height(m) / 2) + 'px';
       });
       field.classList.add('is-ready');
-      reveal();
     }
     // Each motif draws itself in the first time it reaches the viewport.
-    var seen = new WeakSet();
-    function reveal() {
-      var top = window.scrollY, bottom = top + window.innerHeight;
-      field.querySelectorAll('.motif').forEach(function (m) {
-        if (seen.has(m)) return;
-        var y = parseFloat(m.style.top) || 0;
-        if (y < bottom - 60 && y + height(m) > top) { m.classList.add('is-in'); seen.add(m); }
-      });
+    // IntersectionObserver rather than scroll arithmetic: the hand-rolled
+    // version missed every motif below the second one, and an undrawn line
+    // sits at stroke-dashoffset 1, which is invisible -- so the artwork
+    // simply never appeared. A motif that is never observed is revealed
+    // anyway on a timer, so the failure mode is "drawn without animating"
+    // rather than "not there".
+    function revealAll() {
+      field.querySelectorAll('.motif').forEach(function (m) { m.classList.add('is-in'); });
     }
-    var ticking = false;
-    window.addEventListener('scroll', function () {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(function () { reveal(); ticking = false; });
-    }, { passive: true });
+    if (window.IntersectionObserver) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        });
+      }, { rootMargin: '120px 0px' });
+      field.querySelectorAll('.motif').forEach(function (m) { io.observe(m); });
+      setTimeout(revealAll, 6000);
+    } else {
+      revealAll();
+    }
     window.addEventListener('resize', place);
     window.addEventListener('load', place);
     if (window.ResizeObserver) new ResizeObserver(place).observe(document.body);

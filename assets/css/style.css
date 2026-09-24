@@ -76,16 +76,15 @@ sup { font-size: 0.7em; line-height: 0; }
 .bg-field:not(.is-ready) { visibility: hidden; }
 .motif { position: absolute; top: 0; left: 0; width: 100%; height: auto; display: block; overflow: visible;
   --margin: calc((100% - var(--max)) / 2);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(var(--margin) - 50px), rgba(0,0,0,.15) var(--margin), transparent calc(var(--margin) + 70px), transparent calc(100% - var(--margin) - 70px), rgba(0,0,0,.15) calc(100% - var(--margin)), #000 calc(100% - var(--margin) + 50px), #000 calc(100% - 40px), transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(var(--margin) - 50px), rgba(0,0,0,.15) var(--margin), transparent calc(var(--margin) + 70px), transparent calc(100% - var(--margin) - 70px), rgba(0,0,0,.15) calc(100% - var(--margin)), #000 calc(100% - var(--margin) + 50px), #000 calc(100% - 40px), transparent 100%); }
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(var(--margin) - 50px), rgba(0,0,0,.15) var(--margin), transparent calc(var(--margin) + 70px), transparent calc(100% - var(--margin) - 70px), rgba(0,0,0,.15) calc(100% - var(--margin)), #000 calc(100% - var(--margin) + 50px));
+  mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(var(--margin) - 50px), rgba(0,0,0,.15) var(--margin), transparent calc(var(--margin) + 70px), transparent calc(100% - var(--margin) - 70px), rgba(0,0,0,.15) calc(100% - var(--margin)), #000 calc(100% - var(--margin) + 50px)); }
 
 /* width is set explicitly, never auto: an SVG is a replaced element, so
    width:auto plus an explicit height makes it size from its own aspect
-   ratio and ignore left/right, which blew the hero motif out to 3164px.
+   ratio and ignore left/right, which blew the hero motif out to 3164px. */
 
-/* The mask fades the artwork out at both window edges. Without the trailing
-   stops the right side stayed opaque to the boundary and overflow:hidden
-   chopped it, which read as a cut-off drawing. */
+/* The mask stays opaque to the right edge on purpose: the drawings run all
+   the way out, and fading the last 40px cuts their ends off. */
 
 /* Motion: each motif draws itself once, the first time it scrolls into view,
    then breathes very slowly so the page never looks frozen. The nodes fade
@@ -94,7 +93,10 @@ sup { font-size: 0.7em; line-height: 0; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 @keyframes breathe { to { transform: translateY(-3px); } }
 @keyframes pulse { to { fill-opacity: .7; } }
-.motif .art-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+/* Drawn by default; hidden only while a motif is still waiting its turn.
+   The other way round, any motif the observer misses stays invisible. */
+.motif .art-line { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.motif:not(.is-in) .art-line { stroke-dashoffset: 1; }
 .motif .art-nodes { opacity: 0; transition: opacity 1s ease 0.9s; }
 .motif.is-in .art-line {
   animation: draw 1.9s cubic-bezier(.25, .6, .2, 1) calc(var(--i, 0) * 0.12s) forwards,
