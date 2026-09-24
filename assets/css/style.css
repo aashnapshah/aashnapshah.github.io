@@ -74,10 +74,14 @@ sup { font-size: 0.7em; line-height: 0; }
 .bg-stage svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .bg-field { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
 .bg-field:not(.is-ready) { visibility: hidden; }
-.motif { position: absolute; top: 0; left: 0; right: 0; width: auto; height: auto; display: block; overflow: visible;
+.motif { position: absolute; top: 0; left: 0; width: 100%; height: auto; display: block; overflow: visible;
   --margin: calc((100% - var(--max)) / 2);
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(var(--margin) - 50px), rgba(0,0,0,.15) var(--margin), transparent calc(var(--margin) + 70px), transparent calc(100% - var(--margin) - 70px), rgba(0,0,0,.15) calc(100% - var(--margin)), #000 calc(100% - var(--margin) + 50px), #000 calc(100% - 40px), transparent 100%);
   mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(var(--margin) - 50px), rgba(0,0,0,.15) var(--margin), transparent calc(var(--margin) + 70px), transparent calc(100% - var(--margin) - 70px), rgba(0,0,0,.15) calc(100% - var(--margin)), #000 calc(100% - var(--margin) + 50px), #000 calc(100% - 40px), transparent 100%); }
+
+/* width is set explicitly, never auto: an SVG is a replaced element, so
+   width:auto plus an explicit height makes it size from its own aspect
+   ratio and ignore left/right, which blew the hero motif out to 3164px.
 
 /* The mask fades the artwork out at both window edges. Without the trailing
    stops the right side stayed opaque to the boundary and overflow:hidden
