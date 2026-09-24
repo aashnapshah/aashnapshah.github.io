@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css?v=8bb87adc">
+  <link rel="stylesheet" href="/assets/css/style.css?v=ec758d49">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -554,12 +554,21 @@
     // simply never appeared. A motif that is never observed is revealed
     // anyway on a timer, so the failure mode is "drawn without animating"
     // rather than "not there".
-    // draw is 1.9s plus up to ~0.85s of per-line stagger; settle a little after.
-    var SETTLE_MS = 3200;
+    // A figure settles the moment its last line finishes drawing, so the
+    // handover is invisible. The timer is a fallback only, for a draw that
+    // never ends (a paused tab, reduced motion), and sits well past the
+    // longest draw: 1.9s plus up to ~0.85s of per-line stagger.
+    var SETTLE_FALLBACK_MS = 4000;
+    function settle(m) { m.classList.add('is-drawn'); }
     function enter(m) {
       if (m.classList.contains('is-in')) return;
+      var lines = m.querySelectorAll('.art-line'), ended = 0;
+      m.addEventListener('animationend', function (e) {
+        if (e.animationName !== 'draw') return;
+        if (++ended >= lines.length) settle(m);
+      });
       m.classList.add('is-in');
-      setTimeout(function () { m.classList.add('is-drawn'); }, SETTLE_MS);
+      setTimeout(function () { settle(m); }, SETTLE_FALLBACK_MS);
     }
     function revealAll() {
       field.querySelectorAll('.motif').forEach(enter);

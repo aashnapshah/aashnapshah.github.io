@@ -99,12 +99,13 @@ sup { font-size: 0.7em; line-height: 0; }
    The other way round, any motif the observer misses stays invisible. */
 .motif .art-line { stroke-dasharray: 1; stroke-dashoffset: 0; }
 .motif:not(.is-in) .art-line { stroke-dashoffset: 1; }
-/* Settled: once a figure has been on screen long enough to have drawn, the
-   dash comes off entirely and the stroke is plain. The draw animation is
-   cosmetic and this is what the page rests on, so a line can never be left
-   part-rendered by dash arithmetic, a frozen timeline, or a browser quirk. */
-.motif.is-drawn .art-line { stroke-dasharray: none !important; stroke-dashoffset: 0 !important;
-  animation: breathe 12s ease-in-out calc(var(--i, 0) * -2.3s) infinite alternate; }
+/* Settled: the state the page rests on once a figure's draw has ended.
+   Offset pinned at 0 (!important outranks a running animation), so nothing
+   can leave a line part-rendered. The dash stays as it is: at offset 0 a
+   single full-length dash is the complete line, so pinning it is invisible,
+   whereas swapping to dasharray:none or re-declaring the breathe animation
+   here restarts breathe mid-cycle and every line visibly ticks. */
+.motif.is-drawn .art-line { stroke-dashoffset: 0 !important; transition: stroke-dashoffset .45s ease-out; }
 .motif .art-nodes { opacity: 0; transition: opacity 1s ease 0.9s; }
 .motif.is-in .art-line {
   animation: draw 1.9s cubic-bezier(.25, .6, .2, 1) calc(var(--i, 0) * 0.12s) forwards,
