@@ -209,12 +209,19 @@ def motif(name, width, height, body, anchor=None, baseline=None, scale=None):
     if scale is not None:
         data += f' data-scale="{scale}"'
 
+    # Circles in user units, not box units: a box-relative radial gradient on
+    # a wide, short figure (the trace is 1240 x 184) squashes into a flat
+    # ellipse and reads as a pink streak across the section. A circle sized
+    # to the figure's height stays a halo behind the drawing at every aspect.
+    h = float(height)
+    r = fmt(min(0.9 * h, 320))
     defs = "".join(
-        f'<radialGradient id="wash-{name}-{side}" cx="{cx}" cy=".5" r=".55">'
+        f'<radialGradient id="wash-{name}-{side}" gradientUnits="userSpaceOnUse" '
+        f'cx="{cx}" cy="{fmt(h / 2)}" r="{r}">'
         f'<stop offset="0" stop-color="{A}" stop-opacity=".045"/>'
         f'<stop offset="1" stop-color="{A}" stop-opacity="0"/>'
         f'</radialGradient>'
-        for side, cx in (("left", "0"), ("right", "1"))
+        for side, cx in (("left", "150"), ("right", fmt(width - 150)))
     )
     wash = "".join(
         f'<rect width="{width}" height="{height}" fill="url(#wash-{name}-{side})"/>'
