@@ -18,7 +18,7 @@
   --font-mono: "SF Mono", Menlo, Consolas, monospace;
   --max: 760px;
   --nav-h: 56px;
-  --side: 200px;
+  --side: 0px;
   --radius: 12px;
   --radius-lg: 18px;
   --poster-img-h: 234px;
@@ -50,14 +50,18 @@ sup { font-size: 0.7em; line-height: 0; }
 .topbar__toggle svg { width: 22px; height: 22px; }
 
 /* ---------- Sidebar ---------- */
-.layout { display: flex; min-height: 100vh; }
-.sidebar { position: fixed; top: 0; left: 0; width: var(--side); height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 3rem 1rem 3rem 2.5rem; z-index: 50; }
-.sidebar ul { list-style: none; display: flex; flex-direction: column; gap: 0.15rem; }
-.sidebar a { display: block; padding: 0.35rem 0.75rem; font-size: 0.83rem; color: var(--text-3); border-radius: 6px; transition: color 0.15s ease; }
+.layout { min-height: 100vh; }
+/* Navigation sits across the top, centred and quiet. It stays put while the
+   page scrolls, on a translucent ground so the artwork behind still reads. */
+.sidebar { position: sticky; top: 0; z-index: 50; display: flex; justify-content: center;
+  padding: 0.85rem 1.5rem; background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.sidebar ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.15rem 1.35rem; }
+.sidebar a { display: block; padding: 0.25rem 0; font-size: 0.83rem; color: var(--text-3); transition: color 0.15s ease; }
 .sidebar a:hover { color: var(--text-2); }
 .sidebar a.active { color: var(--text); font-weight: 600; }
 .sidebar__foot { margin-top: 1.5rem; padding-left: 0.75rem; font-size: 0.72rem; color: var(--text-3); }
-.main { flex: 1; margin-left: var(--side); min-width: 0; }
+.main { margin-left: 0; min-width: 0; }
 
 /* ---------- Background artwork ----------
    Two layers, both behind the page and never interactive:
@@ -66,14 +70,18 @@ sup { font-size: 0.7em; line-height: 0; }
      motifs. The page script sizes the first one to the About section and
      spaces the rest evenly below it. Everything is static.
    Each motif spans the main area and fades out under the column with a mask. */
-.bg-stage { position: absolute; top: 0; left: var(--side); right: 0; height: 660px; z-index: -1; pointer-events: none; }
+.bg-stage { position: absolute; top: 0; left: 0; right: 0; height: 660px; z-index: -1; pointer-events: none; }
 .bg-stage svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .bg-field { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
 .bg-field:not(.is-ready) { visibility: hidden; }
-.motif { position: absolute; top: 0; left: var(--side); width: calc(100vw - var(--side)); height: auto; display: block; overflow: visible;
-  --margin: calc((100vw - var(--side) - var(--max)) / 2);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(var(--margin) - 50px), rgba(0,0,0,.15) var(--margin), transparent calc(var(--margin) + 70px), transparent calc(100% - var(--margin) - 70px), rgba(0,0,0,.15) calc(100% - var(--margin)), #000 calc(100% - var(--margin) + 50px));
-  mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(var(--margin) - 50px), rgba(0,0,0,.15) var(--margin), transparent calc(var(--margin) + 70px), transparent calc(100% - var(--margin) - 70px), rgba(0,0,0,.15) calc(100% - var(--margin)), #000 calc(100% - var(--margin) + 50px)); }
+.motif { position: absolute; top: 0; left: 0; right: 0; width: auto; height: auto; display: block; overflow: visible;
+  --margin: calc((100% - var(--max)) / 2);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(var(--margin) - 50px), rgba(0,0,0,.15) var(--margin), transparent calc(var(--margin) + 70px), transparent calc(100% - var(--margin) - 70px), rgba(0,0,0,.15) calc(100% - var(--margin)), #000 calc(100% - var(--margin) + 50px), #000 calc(100% - 40px), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(var(--margin) - 50px), rgba(0,0,0,.15) var(--margin), transparent calc(var(--margin) + 70px), transparent calc(100% - var(--margin) - 70px), rgba(0,0,0,.15) calc(100% - var(--margin)), #000 calc(100% - var(--margin) + 50px), #000 calc(100% - 40px), transparent 100%); }
+
+/* The mask fades the artwork out at both window edges. Without the trailing
+   stops the right side stayed opaque to the boundary and overflow:hidden
+   chopped it, which read as a cut-off drawing. */
 
 /* Motion: each motif draws itself once, the first time it scrolls into view,
    then breathes very slowly so the page never looks frozen. The nodes fade
@@ -103,8 +111,9 @@ sup { font-size: 0.7em; line-height: 0; }
 
 @media (max-width: 900px) {
   .topbar { display: block; }
-  .sidebar { display: none; top: var(--nav-h); height: calc(100vh - var(--nav-h)); width: 220px; background: var(--bg); border-right: 1px solid var(--border); box-shadow: var(--shadow-lg); padding: 1.5rem 1rem; justify-content: flex-start; }
+  .sidebar { display: none; position: fixed; top: var(--nav-h); left: 0; height: calc(100vh - var(--nav-h)); width: 220px; background: var(--bg); border-right: 1px solid var(--border); box-shadow: var(--shadow-lg); padding: 1.5rem 1rem; backdrop-filter: none; -webkit-backdrop-filter: none; }
   .sidebar.open { display: flex; }
+  .sidebar ul { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
   .main { margin-left: 0; padding-top: var(--nav-h); }
 }
 
