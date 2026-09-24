@@ -1,0 +1,51 @@
+# Photos to pull to the top of the gallery, most important first.
+#
+# One filename per line. The extension is optional and the path is ignored,
+# so "IMG_1287", "IMG_1287.jpg" and "Milo/IMG_1287.jpg" all work.
+# Anything after a # is a comment.
+#
+# The other way to feature a photo is to drop it into
+#   ~/Desktop/Acknowledgements/_featured/
+# Folder photos are appended after anything listed here, since a folder has
+# no meaningful order. Use this file when you care about the exact sequence.
+#
+# Featured photos appear above the grid at roughly double size, in this order.
+# Re-run: python3 tools/build-gallery.py
+
+img-1625.jpg
+cousins-5713236c-bdb9-48ea-b287-23860ce2b2e8.jpg
+dscf2659.jpg
+img-9020.jpg
+friends-img-1284.jpg
+cousins-dscf1597.jpg
+cousins-b7cd1d07-23d9-4d4e-9a63-3089cfab249a.jpg
+cousins-c7458a64-848d-40fd-8df4-31692c705b1d.jpg
+dscf2481.jpg
+friends-img-1306.jpg
+dscf3291.jpg
+friends-img-7919.jpg
+dscf2527.jpg
+dscf2433.jpg
+science-dscf3692.jpg
+dscf3640.jpg
+img-8951.jpg
+dscf3457.jpg
+dscf2444.jpg
+dscf3561.jpg
+img-5569-original.jpg
+dscf2957.jpg
+img-5565-original.jpg
+dscf2515.jpg
+dscf2353.jpg
+dscf2354.jpg
+dscf2420.jpg
+dscf3082.jpg
+milo-img-1287.jpg
+milo-img-2792.jpg
+dscf3423.jpg
+milo-img-2932.jpg
+milo-img-6743.jpg
+dscf2250.jpg
+dscf2351.jpg
+dscf2304.jpg
+dscf2305.jpg

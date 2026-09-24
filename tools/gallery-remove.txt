@@ -1,0 +1,5 @@
+# Photos to leave out of the gallery entirely. One filename per line.
+# Re-run: python3 tools/build-gallery.py
+
+dscf2350.jpg
+dscf2351.jpg
