@@ -226,8 +226,11 @@ sup { font-size: 0.7em; line-height: 0; }
 .poster__image img { width: 100%; height: var(--poster-img-h); object-fit: contain; border-radius: 4px; }
 /* The featured bubble spans the text column; the preview inside stays small
    and centred, so the frame has room around it. */
-.poster-feature .poster__image { padding: 8px; }
-.poster-feature .poster__image img { max-width: 540px; margin: 0 auto; }
+/* The feature card hugs its poster. Full column width with the image held
+   to the shared height left a large empty white field around a small poster;
+   the two cards below fill their width, so this one fits its content instead. */
+.poster-feature .poster__image { padding: 8px; width: fit-content; max-width: 100%; margin: 0 auto; }
+.poster-feature .poster__image img { width: auto; max-width: 100%; }
 .poster__image:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .poster__body { margin-top: 0.9rem; }
